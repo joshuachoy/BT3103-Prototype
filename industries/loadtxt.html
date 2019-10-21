@@ -12,21 +12,19 @@
     
 </head>
 <body>
-<div id="editor"># Heres a simple function to get you started
-def greatest_common_denominator(A,B):
-    if A < B: return greatest_common_denominator(B,A)
-    if not B: return A
-    return greatest_common_denominator(B,A%B)
-    
-if __name__ == "__main__":
-    print(greatest_common_denominator(152734,23445332))
+<div id="editor"># Loading in Text data
+import pandas as pd
+df = pd.read_csv("fraud_data.txt", delimiter = ",") 
+# argument specifies name of file and delimiter.
+# Delimiter separates data. It may be tabs, then delimiter = "/t"
 </div>
 </body>
 <script>
-    
 window.onload = function(e){
     console.log("Initialize Codepad!");
-        var editor = ace.edit("editor");
+    var editor = ace.edit("editor");
+    <!-- prevents user from editing -->
+    editor.setReadOnly(true);
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/python");
 }

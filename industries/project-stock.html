@@ -135,8 +135,8 @@
 
         <div class="row justify-content-center">
             <div class="col-md-8">
-              <h1> Load in File</h1>
-              <h2> Loading in Data </h2>
+              <h1> 1. Load in File</h1>
+              <h2> 1.1. Loading in Data </h2>
               <p> Loading data from different types of file (.txt or .csv or .xlsx) </p>
               <p> </p>
               <p> Step 1: Save file in same folder as current Python script. </p>
@@ -151,7 +151,7 @@
               </ul>
               <p style="color:red;"> Question insert here for user to practice loading in data. </p>
 
-              <h2> Checking Loaded Data </h2>
+              <h2> 1.2. Checking Loaded Data </h2>
               <p> Always make it a practice to check that our data has been loaded correctly (meaning all columns and rows are loaded). </p>
               <p> Step 1: Check the number of rows and columns. </p>
               <ul>
@@ -175,6 +175,39 @@
                 <iframe src="showlast20.html" width="100%"></iframe>
               </ul>
               <p style="color:red;"> Question insert here for user to practice checking first/last few rows of data. </p>
+
+              <h1> 2. Data Exploration </h1>
+              <h2> Exploratory Data Analysis </h2>
+              <p> Exploratory Data Analysis (EDA) is performed in which mean, standard deviation and correlation etc. are found between variables. This gives us a better understanding of the data we are dealing with. </p>
+              <p> Step 1: Finding Mean of Variables. </p>
+              <ul>
+                <li> The function .mean() can be called to the dataframe. It will return the mean values of each variable of type numeric and float. </li>
+                <li> Note that the resulting table of mean does not include variables of string data type (e.g. column “type”). </li>
+                <iframe src="dfMean.html" width="100%"></iframe>
+                <li style="color:red;"> Show output table here. </li>
+              </ul>
+              <p> Step 2: Finding Median of Variables. </p>
+              <ul>
+                <li> The function .median() can be called to the dataframe. It will return the median value of each variable of type numeric and float. </li>
+                <iframe src="dfMedian.html" width="100%"></iframe>
+                <li style="color:red;"> Show output table here. </li>
+              </ul>
+
+              <p> Step 3: Finding Standard Deviation of Variables. </p>
+              <ul>
+                <li> The function .std() can be called to the dataframe. It will return the standard deviation value of each variable of type numeric and float. </li>
+                <iframe src="dfStandardDe.html" width="100%"></iframe>
+                <li style="color:red;"> Show output table here. </li>
+              </ul>
+
+              <p> Step 4: Finding Correlations between Variables. </p>
+              <ul>
+                <li> The function .corr() can be called to the dataframe. It will return the correlation value between every variable of type numeric and float. </li>
+                <iframe src="dfCorr.html" width="100%"></iframe>
+                <li style="color:red;"> Show output table here. </li>
+              </ul>
+              <p style="color:red;"> Checkpoint: Question insert here for user to perform EDA on data. </p>
+
             </div>
         </div>
       </div>

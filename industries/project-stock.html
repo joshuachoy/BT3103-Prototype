@@ -149,7 +149,7 @@
                 <li> For Excel file </li>
                 <iframe src="loadexcel.html" width="100%"></iframe>
               </ul>
-              <p style="color:red;"> Question insert here for user to practice loading in data. </p>
+              <p style="color:red;"> Checkpoint: Question insert here for user to practice loading in data. </p>
 
               <h2> 1.2. Checking Loaded Data </h2>
               <p> Always make it a practice to check that our data has been loaded correctly (meaning all columns and rows are loaded). </p>
@@ -174,7 +174,7 @@
                 <li> Display last 20 rows of data. </li>
                 <iframe src="showlast20.html" width="100%"></iframe>
               </ul>
-              <p style="color:red;"> Question insert here for user to practice checking first/last few rows of data. </p>
+              <p style="color:red;"> Checkpoint: Question insert here for user to practice checking first/last few rows of data. </p>
 
               <h1> 2. Data Exploration </h1>
               <h2> Exploratory Data Analysis </h2>
@@ -207,6 +207,30 @@
                 <li style="color:red;"> Show output table here. </li>
               </ul>
               <p style="color:red;"> Checkpoint: Question insert here for user to perform EDA on data. </p>
+
+              <h1> 3. Data Cleaning </h1>
+              <h2> 3.1. Checking for NA rows and columns </h2>
+              <p> In reality, datasets are full of inconsistencies such as missing values due to poor data collection and management practices. To avoid running into errors when furthering our analysis, we need to clean our data. </p>
+              <p> Step 1: Examine if data entries are null values. </p>
+              <ul>
+                <li> This method is only suitable for small datasets as it is hard to examine numerous rows and columns. </li>
+                <iframe src="dfNull.html" width="100%"></iframe>
+                <li style="color:red;"> Show output table here. </li>
+              </ul>
+
+              <p> Step 2: More concise method to checking for null values. </p>
+              <ul>
+                <li> Show the sum of null values in each column. </li>
+                <iframe src="dfNullSum.html" width="100%"></iframe>
+                <li style="color:red;"> Show output table here. </li>
+              </ul>
+
+              <h2> 3.2. Dealing with NA values </h2>
+              <p> Method 1: Dropping all rows that have at least 1 null value. </p>
+              <iframe src="dfDropNA.html" width="100%"></iframe>
+              <p> Method 2: Replacing null values with the computed mean of column/variable. </p>
+              <iframe src="dfReplaceNA.html" width="100%"></iframe>
+              <p style="color:red;"> Checkpoint: Question insert here for user to practice cleaning data. </p>
 
             </div>
         </div>

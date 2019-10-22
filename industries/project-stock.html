@@ -88,7 +88,7 @@
     <!-- END slider -->
     </div>
     
-      <div class="container">
+      <div class="container" id="vueOnly">
         <div class="row">
           <div class="col-12" style="margin-top: -150px;">
             <p><img src="images/stock3.jpg" alt="Image" class="img-fluid"></p>
@@ -131,6 +131,8 @@
 
         <div class="row justify-content-center">
           <div class="col-md-8">     
+            <h1> 0. Let's get started and install Pandas package in your desktop! </h1>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/8Sipkd9vNKk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <h1> 1. Load in File</h1>
             <h2> 1.1. Loading in Data </h2>
             <p> Loading data from different types of file (.txt or .csv or .xlsx) </p>
@@ -190,125 +192,16 @@
         </head>
         <body>
           <h1>Q1. Checking Loaded Data Activity</h1>
-          <div id="app">
+          <div>
               <doctest-activity v-bind:layout-things=questions[0].layoutItems v-bind:question-name=questions[0].name>
           </div>
         </body>
         <body>
           <h1>Q2. Get First Few Rows Activity</h1>
-            <div id="app">
+            <div>
               <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].name>
             </div>
         </body>
-        <script src="https://unpkg.com/vue"></script>
-        <script src="https://unpkg.com/vue-material@beta"></script>
-        <script>
-        Vue.use(VueMaterial.default)
-        
-        Vue.component('doctest-activity', {
-            props: ['layoutThings', 'questionName'],
-            data: function () {
-                return {
-                answer:"",
-                layoutItems: this.layoutThings
-            }
-            },
-            methods: {
-                postContents: function () {
-                // comment: leaving the gatewayUrl empty - API will post back to itself
-                const gatewayUrl = '';
-                fetch(gatewayUrl, {
-            method: "POST",
-            headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({name: {0:this.questionName}, editable:{0:this.layoutItems[0].vModel}})          <!-- Edited Here -->
-            }).then(response => {
-                return response.json()
-            }).then(data => {
-                this.answer = JSON.parse(JSON.stringify(data))
-                return this.$emit('questionhandler',{data, questionName:this.questionName})
-                })
-             }
-            },
-            template: '<div class="md-layout  md-gutter"><div id="cardGroupCreator" class="md-layout-item md-size-50">\
-                <md-card v-for="layoutItem in layoutItems" :key=layoutItem.header>\
-                    <md-card-header>\
-                        <md-card-header-text>\
-                            <div class="md-title">{{layoutItem.header}}</div>\
-                            <div class="md-subhead">{{layoutItem.subHeader}}</div>\
-                        </md-card-header-text>\
-                    </md-card-header>\
-                    <md-card-content>\
-                        <md-field>\
-                            <md-textarea v-model="layoutItem.vModel"></md-textarea>\
-                         </md-field>\
-                    </md-card-content>\
-                </md-card>\
-                        <button v-on:click="postContents">Submit</button>\
-                </div>\
-                <div id="cardGroupPreview" class="md-layout-item md-size-50">\
-                    <md-card>\
-                        <md-card-header>\
-                        <md-card-header-text>\
-                            <div class="md-title">Output</div>\
-                            <div class="md-subhead">Test results</div>\
-                        </md-card-header-text>\
-                    </md-card-header>\
-                    <md-card-content>\
-                        <md-field>\
-                            <md-tabs><md-tab id="tab-htmlResults" md-label="HTML results"><div v-html="answer.htmlFeedback"></div></md-tab><md-tab id="tab-jsonResults" md-label="JSON results"><md-textarea v-model="answer.jsonFeedback" readonly></md-textarea></md-tab>\
-                                <md-tab id="tab-textResults" md-label="Text results">\
-                                    <md-textarea v-model="answer.textFeedback" readonly></md-textarea>\
-                                </md-tab></md-tabs>\
-                         </md-field>\
-                    </md-card-content>\
-                </md-card>\
-                </div></div>\
-                '
-        })
-        
-        new Vue({
-            el: '#app',
-            data: function () {
-                return {
-                questions:[
-                    {name:"question 1", layoutItems: [
-                    {header:"Check Loaded Data", subHeader:'Your code goes below', vModel:""}
-                    ], status:" ??"},
-                    {name:"question 2", layoutItems: [
-                    {header:"Check First Five Rows of Data", subHeader:'Your code goes below', vModel:""}
-                    ], status:" ??"},
-                    {name:"question 3", layoutItems: [
-                    {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def floorDivide(a,b):\\n return b"}
-                    ], status:" ??"},
-                    {name:"question 4", layoutItems: [
-                    {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def logicAndOperation(a,b):\\n return b"}
-                    ], status:" ??"},
-                    {name:"question 5", layoutItems: [
-                    {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def doubleEqualOperation(a,b):\\n return b"}
-                    ], status:" ??"}
-                ]
-            }
-            },
-             methods: {
-                toggleQuestionStatus (response) {
-                    const {data, questionName} = response
-                    if (data.htmlFeedback) {
-                        const searchText = data.htmlFeedback
-                        searchText.search(/b2d8b2/) !== -1 ?
-                            searchText.search(/#ff9999/) == -1 ?
-                            this.questions.find(item => item.name === questionName).status = " ??"
-                            :
-                            this.questions.find(item => item.name === questionName).status = " ??"
-                        :
-                        this.questions.find(item => item.name === questionName).status = " ??"
-                    }
-                }
-            }
-          })
-        </script>
         
         <div class="row justify-content-center">
           <div class="col-md-8">
@@ -498,6 +391,115 @@
     <script src="js/main.js"></script>
 
     <script src="js/main.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue-material@beta"></script>
+    <script>
+    Vue.use(VueMaterial.default)
+    
+    Vue.component('doctest-activity', {
+        props: ['layoutThings', 'questionName'],
+        data: function () {
+            return {
+            answer:"",
+            layoutItems: this.layoutThings
+        }
+        },
+        methods: {
+            postContents: function () {
+            // comment: leaving the gatewayUrl empty - API will post back to itself
+            const gatewayUrl = '';
+            fetch(gatewayUrl, {
+        method: "POST",
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name: {0:this.questionName}, editable:{0:this.layoutItems[0].vModel}})          <!-- Edited Here -->
+        }).then(response => {
+            return response.json()
+        }).then(data => {
+            this.answer = JSON.parse(JSON.stringify(data))
+            return this.$emit('questionhandler',{data, questionName:this.questionName})
+            })
+         }
+        },
+        template: '<div class="md-layout  md-gutter"><div id="cardGroupCreator" class="md-layout-item md-size-50">\
+            <md-card v-for="layoutItem in layoutItems" :key=layoutItem.header>\
+                <md-card-header>\
+                    <md-card-header-text>\
+                        <div class="md-title">{{layoutItem.header}}</div>\
+                        <div class="md-subhead">{{layoutItem.subHeader}}</div>\
+                    </md-card-header-text>\
+                </md-card-header>\
+                <md-card-content>\
+                    <md-field>\
+                        <md-textarea v-model="layoutItem.vModel"></md-textarea>\
+                     </md-field>\
+                </md-card-content>\
+            </md-card>\
+                    <button v-on:click="postContents">Submit</button>\
+            </div>\
+            <div id="cardGroupPreview" class="md-layout-item md-size-50">\
+                <md-card>\
+                    <md-card-header>\
+                    <md-card-header-text>\
+                        <div class="md-title">Output</div>\
+                        <div class="md-subhead">Test results</div>\
+                    </md-card-header-text>\
+                </md-card-header>\
+                <md-card-content>\
+                    <md-field>\
+                        <md-tabs><md-tab id="tab-htmlResults" md-label="HTML results"><div v-html="answer.htmlFeedback"></div></md-tab><md-tab id="tab-jsonResults" md-label="JSON results"><md-textarea v-model="answer.jsonFeedback" readonly></md-textarea></md-tab>\
+                            <md-tab id="tab-textResults" md-label="Text results">\
+                                <md-textarea v-model="answer.textFeedback" readonly></md-textarea>\
+                            </md-tab></md-tabs>\
+                     </md-field>\
+                </md-card-content>\
+            </md-card>\
+            </div></div>\
+            '
+    })
+    
+    new Vue({
+        el: '#vueOnly',
+        data: function () {
+            return {
+            questions:[
+                {name:"question 1", layoutItems: [
+                {header:"Check Loaded Data", subHeader:'Your code goes below', vModel:""}
+                ], status:" ??"},
+                {name:"question 2", layoutItems: [
+                {header:"Check First Five Rows of Data", subHeader:'Your code goes below', vModel:""}
+                ], status:" ??"},
+                {name:"question 3", layoutItems: [
+                {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def floorDivide(a,b):\\n return b"}
+                ], status:" ??"},
+                {name:"question 4", layoutItems: [
+                {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def logicAndOperation(a,b):\\n return b"}
+                ], status:" ??"},
+                {name:"question 5", layoutItems: [
+                {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def doubleEqualOperation(a,b):\\n return b"}
+                ], status:" ??"}
+            ]
+        }
+        },
+         methods: {
+            toggleQuestionStatus (response) {
+                const {data, questionName} = response
+                if (data.htmlFeedback) {
+                    const searchText = data.htmlFeedback
+                    searchText.search(/b2d8b2/) !== -1 ?
+                        searchText.search(/#ff9999/) == -1 ?
+                        this.questions.find(item => item.name === questionName).status = " ??"
+                        :
+                        this.questions.find(item => item.name === questionName).status = " ??"
+                    :
+                    this.questions.find(item => item.name === questionName).status = " ??"
+                }
+            }
+        }
+      })
+    </script>
     
   </body>
 </html>

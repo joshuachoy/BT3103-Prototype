@@ -147,6 +147,130 @@
                 <li> For Excel file </li>
                 <iframe src="loadexcel.html" width="100%"></iframe>
               </ul>
+              
+
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <!-- START TEST PROF CODE BOX -->
+              <head>
+                  <meta charset="utf-8">
+                  <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
+                  <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
+                  <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
+                </head>
+                <body>
+                  <h1>Your turn to try importing data!</h1>
+                  <div id="app">
+                  <md-tabs>
+                    <md-tab v-for="question in questions" :key=question.name v-bind:md-label=question.name+question.status>
+                        <doctest-activity v-bind:layout-things=question.layoutItems v-bind:question-name=question.name  @questionhandler="toggleQuestionStatus"/>
+                    </md-tab>
+                  </md-tabs>
+                  </div>
+                </body> 
+                  <script src="https://unpkg.com/vue"></script>
+                  <script src="https://unpkg.com/vue-material@beta"></script>
+                  <script>
+                  Vue.use(VueMaterial.default)
+        
+                  Vue.component('doctest-activity', {
+                    props: ['layoutThings', 'questionName'],
+                    data: function () {
+                      return {
+                        answer:"",
+                        layoutItems: this.layoutThings
+                      }
+                    },
+                    methods: {
+                      postContents: function () {
+                        // comment: leaving the gatewayUrl empty - API will post back to itself
+                        const gatewayUrl = '';
+                        fetch(gatewayUrl, {
+                          method: "POST",
+                          headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify(df.shape)
+                          }).then(response => {
+                              return response.json()
+                          }).then(data => {
+                              <!-- CHECK -->
+                              var myIFrame = document.getElementById("code-box");
+                              var content = myIFrame.contentWindow.document.body.innerHTM;
+                              this.answer = JSON.parse(JSON.stringify(content))
+                              return this.$emit('questionhandler',{content, questionName:this.questionName})
+                              })
+                          }
+                      },
+                    template: '<div class="md-layout  md-gutter"><div id="cardGroupCreator" class="md-layout-item md-size-100">\
+                        <md-card v-for="layoutItem in layoutItems" :key=layoutItem.header>\
+                            <md-card-header>\
+                                <md-card-header-text>\
+                                    <div class="md-title">{{layoutItem.header}}</div>\
+                                    <div class="md-subhead">{{layoutItem.subHeader}}</div>\
+                                </md-card-header-text>\
+                            </md-card-header>\
+                            <md-card-content>\
+                                <md-field>\
+                                    <iframe id="code-box" src="loadcsv_todo.html" width="100%"></iframe>\
+                                </md-field>\
+                            </md-card-content>\
+                        </md-card>\
+                                <button v-on:click="postContents">Submit</button>\
+                        </div>\
+                        <div id="cardGroupPreview" class="md-layout-item md-size-100">\
+                            <md-card>\
+                                <md-card-header>\
+                                <md-card-header-text>\
+                                    <div class="md-title">Output</div>\
+                                    <div class="md-subhead">Test results</div>\
+                                </md-card-header-text>\
+                            </md-card-header>\
+                            <md-card-content>\
+                                <md-field>\
+                                    <md-tabs><md-tab id="tab-htmlResults" md-label="HTML results"><div v-html="answer.htmlFeedback"></div></md-tab><md-tab id="tab-jsonResults" md-label="JSON results"><md-textarea v-model="answer.jsonFeedback" readonly></md-textarea></md-tab>\
+                                        <md-tab id="tab-textResults" md-label="Text results">\
+                                            <md-textarea v-model="answer.textFeedback" readonly></md-textarea>\
+                                        </md-tab></md-tabs>\
+                                </md-field>\
+                            </md-card-content>\
+                        </md-card>\
+                        </div></div>\
+                        '
+                    })
+                      
+            new Vue({
+                el: '#app',
+                data: function () {
+                    return {
+                    questions:[
+                        {name:"question 1", layoutItems: [
+                        {header:"Import fraud_data.csv", subHeader:'Type the code below', vModel:"import pandas as pd"}
+                        ], status:" ??"}
+                    ]
+                }
+                },
+                methods: {
+                    toggleQuestionStatus (response) {
+                        const {data, questionName} = response
+                        if (data.htmlFeedback) {
+                            const searchText = data.htmlFeedback
+                            searchText.search(/b2d8b2/) !== -1 ?
+                                searchText.search(/#ff9999/) == -1 ?
+                                this.questions.find(item => item.name === questionName).status = " ??"
+                                :
+                                this.questions.find(item => item.name === questionName).status = " ??"
+                            :
+                            this.questions.find(item => item.name === questionName).status = " ??"
+                        }
+                    }
+                }
+              })
+            </script>
+          </div>
+      </div>
+      <!-- END TEST PROF CODE BOX -->
               <p style="color:red;"> Checkpoint: Question insert here for user to practice loading in data. </p>
 
               <h2> 1.2. Checking Loaded Data </h2>

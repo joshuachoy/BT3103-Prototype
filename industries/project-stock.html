@@ -185,23 +185,23 @@
                       postContents: function () {
                         // comment: leaving the gatewayUrl empty - API will post back to itself
                         const gatewayUrl = '';
+                        console.log("Hey");
                         fetch(gatewayUrl, {
                           method: "POST",
                           headers: {
                           'Accept': 'application/json',
                           'Content-Type': 'application/json'
                           },
-                          body: JSON.stringify(df.shape)
+                          body: JSON.stringify({name: {0:this.questionName},editable:{0:this.layoutItems[2].vModel}})
                           }).then(response => {
                               return response.json()
                           }).then(data => {
-                              <!-- CHECK -->
-                              var myIFrame = document.getElementById("code-box");
-                              var content = myIFrame.contentWindow.document.body.innerHTM;
+                              //var myIFrame = document.getElementById("code-box");
+                              //var content = myIFrame.contentWindow.document.body.innerHTM;
                               this.answer = JSON.parse(JSON.stringify(content))
                               return this.$emit('questionhandler',{content, questionName:this.questionName})
                               })
-                          }
+                            }
                       },
                     template: '<div class="md-layout  md-gutter"><div id="cardGroupCreator" class="md-layout-item md-size-100">\
                         <md-card v-for="layoutItem in layoutItems" :key=layoutItem.header>\
@@ -297,6 +297,29 @@
                 <iframe src="showlast20.html" width="100%"></iframe>
               </ul>
               <p style="color:red;"> Checkpoint: Question insert here for user to practice checking first/last few rows of data. </p>
+              <p>Please select the correct option to see the shape of the dataframe.</p>
+
+                <form name="myForm">
+                    <input type="radio" name="myRadios"  value="1" >df.shapes()<br>
+                    <input type="radio" name="myRadios"  value="2" >df.shape<br>
+                    <input type="radio" name="myRadios"  value="3" >df.mean<br>
+                </form>
+                <span id="1.2 answer"></span>
+                
+                <script>
+                var amountField = document.getElementById('1.2 answer');
+                var rad = document.myForm.myRadios;
+                for(var i = 0; i < rad.length; i++) {
+                    rad[i].onclick = function() {
+                        console.log(this.value);
+                        if(this.value == 2) {
+                            amountField.textContent = "correct";
+                        } else{
+                            amountField.textContent = "WRONG";
+                        }
+                    };
+                }
+                </script>
 
               <h1> 2. Data Exploration </h1>
               <h2> Exploratory Data Analysis </h2>

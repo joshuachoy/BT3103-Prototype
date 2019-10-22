@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -133,6 +132,140 @@
 
         <div class="row justify-content-center">
             <div class="col-md-8">
+                    <head>
+                    <meta charset="utf-8">
+                    <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
+                    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
+                    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
+                  </head>
+                    <body>
+                         <h1>Python Doctest Custom Activity</h1>
+                        <div id="app">
+                            <md-tabs>
+                                <md-tab v-for="question in questions" :key=question.name v-bind:md-label=question.name+question.status>
+                                    <doctest-activity v-bind:layout-things=question.layoutItems v-bind:question-name=question.name  @questionhandler="toggleQuestionStatus"/>
+                                </md-tab>
+                            </md-tabs>
+                            </div>
+                        </div>
+                    </body> 
+                    <script src="https://unpkg.com/vue"></script>
+                    <script src="https://unpkg.com/vue-material@beta"></script>
+                    <script>
+                    Vue.use(VueMaterial.default)
+                    
+                    Vue.component('doctest-activity', {
+                        props: ['layoutThings', 'questionName'],
+                        data: function () {
+                            return {
+                            answer:"",
+                            layoutItems: this.layoutThings
+                        }
+                        },
+                        methods: {
+                            postContents: function () {
+                            // comment: leaving the gatewayUrl empty - API will post back to itself
+                            const gatewayUrl = '';
+                            fetch(gatewayUrl, {
+                        method: "POST",
+                        headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({name: {0:this.questionName}, shown:{0:this.layoutItems[0].vModel},editable:{0:this.layoutItems[2].vModel}, hidden:{0:this.layoutItems[1].vModel}})          <!-- Edited Here -->
+                        }).then(response => {
+                            return response.json()
+                        }).then(data => {
+                            this.answer = JSON.parse(JSON.stringify(data))
+                            return this.$emit('questionhandler',{data, questionName:this.questionName})
+                            })
+                         }
+                        },
+                        template: '<div class="md-layout  md-gutter"><div id="cardGroupCreator" class="md-layout-item md-size-50">\
+                            <md-card v-for="layoutItem in layoutItems" :key=layoutItem.header>\
+                                <md-card-header>\
+                                    <md-card-header-text>\
+                                        <div class="md-title">{{layoutItem.header}}</div>\
+                                        <div class="md-subhead">{{layoutItem.subHeader}}</div>\
+                                    </md-card-header-text>\
+                                </md-card-header>\
+                                <md-card-content>\
+                                    <md-field>\
+                                        <md-textarea v-model="layoutItem.vModel"></md-textarea>\
+                                     </md-field>\
+                                </md-card-content>\
+                            </md-card>\
+                                    <button v-on:click="postContents">Submit</button>\
+                            </div>\
+                            <div id="cardGroupPreview" class="md-layout-item md-size-50">\
+                                <md-card>\
+                                    <md-card-header>\
+                                    <md-card-header-text>\
+                                        <div class="md-title">Output</div>\
+                                        <div class="md-subhead">Test results</div>\
+                                    </md-card-header-text>\
+                                </md-card-header>\
+                                <md-card-content>\
+                                    <md-field>\
+                                        <md-tabs><md-tab id="tab-htmlResults" md-label="HTML results"><div v-html="answer.htmlFeedback"></div></md-tab><md-tab id="tab-jsonResults" md-label="JSON results"><md-textarea v-model="answer.jsonFeedback" readonly></md-textarea></md-tab>\
+                                            <md-tab id="tab-textResults" md-label="Text results">\
+                                                <md-textarea v-model="answer.textFeedback" readonly></md-textarea>\
+                                            </md-tab></md-tabs>\
+                                     </md-field>\
+                                </md-card-content>\
+                            </md-card>\
+                            </div></div>\
+                            '
+                    })
+                    
+                    new Vue({
+                        el: '#app',
+                        data: function () {
+                            return {
+                            questions:[
+                                {name:"question 1", layoutItems: [
+                                {header:"Check Loaded Data", subHeader:'Your code goes below', vModel:""}
+                                ], status:" ??"},
+                                {name:"question 2", layoutItems: [
+                                {header:"Not in Function", subHeader:'Add your doctest below, View https://pymotw.com/3/doctest/ for more info', vModel:">>> multiply(1,2)\\n2 \\n>>> multiply(2,3)\\n6"},
+                                {header:"Not in Function", subHeader:'Your code goes below', vModel:">>> multiply(10,2)\\n20 \\n>>> multiply(2,2)\\n4"},
+                                {header:"Check First Five Rows of Data", subHeader:'Your code goes below', vModel:""}
+                                ], status:" ??"},
+                                {name:"question 3", layoutItems: [
+                                {header:"Tests", subHeader:'Add your doctest below, View https://pymotw.com/3/doctest/ for more info', vModel:">>> floorDivide(10,2)\\n5 \\n>>> floorDivide(2,3)\\n0"},
+                                {header:"Hidden Code Block", subHeader:'Your code goes below', vModel:">>> floorDivide(5,2)\\n2 \\n>>> floorDivide(2,2)\\n1"},
+                                {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def floorDivide(a,b):\\n return b"}
+                                ], status:" ??"},
+                                {name:"question 4", layoutItems: [
+                                {header:"Tests", subHeader:'Add your doctest below, View https://pymotw.com/3/doctest/ for more info', vModel:">>> logicAndOperation(True,True)\\nTrue \\n>>> logicAndOperation(False,True)\\nFalse"},
+                                {header:"Hidden Code Block", subHeader:'Your code goes below', vModel:">>> logicAndOperation(5,2)\\n2 \\n>>> logicAndOperation(123,321)\\n321"},
+                                {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def logicAndOperation(a,b):\\n return b"}
+                                ], status:" ??"},
+                                {name:"question 5", layoutItems: [
+                                {header:"Tests", subHeader:'Add your doctest below, View https://pymotw.com/3/doctest/ for more info', vModel:">>> doubleEqualOperation(12,12)\\nTrue \\n>>> doubleEqualOperation(12,13)\\nFalse"},
+                                {header:"Hidden Code Block", subHeader:'Your code goes below', vModel:">>> doubleEqualOperation(5,2)\\nFalse \\n>>> doubleEqualOperation((1,2,3),(1,2,3))\\nTrue"},
+                                {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def doubleEqualOperation(a,b):\\n return b"}
+                                ], status:" ??"}
+                            ]
+                        }
+                        },
+                         methods: {
+                            toggleQuestionStatus (response) {
+                                const {data, questionName} = response
+                                if (data.htmlFeedback) {
+                                    const searchText = data.htmlFeedback
+                                    searchText.search(/b2d8b2/) !== -1 ?
+                                        searchText.search(/#ff9999/) == -1 ?
+                                        this.questions.find(item => item.name === questionName).status = " ??"
+                                        :
+                                        this.questions.find(item => item.name === questionName).status = " ??"
+                                    :
+                                    this.questions.find(item => item.name === questionName).status = " ??"
+                                }
+                            }
+                        }
+                      })
+                    </script>
               <h1> 1. Load in File</h1>
               <h2> 1.1. Loading in Data </h2>
               <p> Loading data from different types of file (.txt or .csv or .xlsx) </p>
@@ -147,7 +280,6 @@
                 <li> For Excel file </li>
                 <iframe src="loadexcel.html" width="100%"></iframe>
               </ul>
-            
               <p style="color:red;"> Checkpoint: Question insert here for user to practice loading in data. </p>
 
               <h2> 1.2. Checking Loaded Data </h2>
@@ -174,29 +306,6 @@
                 <iframe src="showlast20.html" width="100%"></iframe>
               </ul>
               <p style="color:red;"> Checkpoint: Question insert here for user to practice checking first/last few rows of data. </p>
-              <p>Please select the correct option to see the shape of the dataframe.</p>
-
-                <form name="myForm">
-                    <input type="radio" name="myRadios"  value="1" >df.shapes()<br>
-                    <input type="radio" name="myRadios"  value="2" >df.shape<br>
-                    <input type="radio" name="myRadios"  value="3" >df.mean<br>
-                </form>
-                <span id="1.2 answer"></span>
-                
-                <script>
-                var amountField = document.getElementById('1.2 answer');
-                var rad = document.myForm.myRadios;
-                for(var i = 0; i < rad.length; i++) {
-                    rad[i].onclick = function() {
-                        console.log(this.value);
-                        if(this.value == 2) {
-                            amountField.textContent = "correct";
-                        } else{
-                            amountField.textContent = "WRONG";
-                        }
-                    };
-                }
-                </script>
 
               <h1> 2. Data Exploration </h1>
               <h2> Exploratory Data Analysis </h2>

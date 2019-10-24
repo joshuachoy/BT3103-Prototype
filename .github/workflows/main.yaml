@@ -9,7 +9,7 @@ jobs:
       - uses: ./
         env:
           AWS_DEFAULT_REGION: "us-east-1"
-          LAMBDA_FUNC_NAME: "vueTestingSuite"
+          LAMBDA_FUNC_NAME: "Pandas"
           LAMBDA_RUNTIME: "python3.7"
           LAMBDA_HANDLER: "lambda_function"
           LAMBDA_MEMORY: 1024

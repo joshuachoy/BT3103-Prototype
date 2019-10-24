@@ -11,7 +11,7 @@ Globals:
 Parameters:
   TableName:
     Type: String
-    Default: 'Fraud_data'
+    Default: 'FraudData'
     Description: (Required) The name of the new DynamoDB table you want to create and save to. Minimum 3 characters
     MinLength: 3
     MaxLength: 50

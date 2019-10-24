@@ -27,10 +27,10 @@ Resources:
       Runtime: python3.6
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref TableName
+            TableName: 'Fraud_data'
       Environment:
         Variables:
-          TABLE_NAME: !Ref TableName    
+          TABLE_NAME: 'Fraud_data'
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -40,7 +40,7 @@ Resources:
   DynamoDBTable:
     Type: 'AWS::DynamoDB::Table'
     Properties:
-      TableName: !Ref TableName
+      TableName: 'Fraud_data'
       AttributeDefinitions:
         - AttributeName: itemId
           AttributeType: S

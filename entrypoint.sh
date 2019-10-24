@@ -15,6 +15,8 @@ cd lambda_functions; zip -r ../lambda-deploy.zip *
 cd ..
 cd ..
 
+pwd
+ls -la .
 aws cloudformation validate-template \
     --template-body file://template.yaml
  

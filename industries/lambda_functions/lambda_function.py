@@ -23,7 +23,7 @@ except ImportError:
 def lambda_handler(event, context):
      # TODO implement
     dynamodb = boto3.resource("dynamodb", region_name = "us-east-1")
-    table = dynamodb.Table("Fraud_data")
+    table = dynamodb.Table("FraudData")
     
     response = table.scan()
 

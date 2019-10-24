@@ -14,10 +14,7 @@ aws s3 cp --acl public-read lambda-deploy-overlay.tgz "$OVERLAY_S3URL"
 cd industries/lambda_functions; zip -r ../lambda-deploy.zip *
 cd ../..
 
-echo "Debug"
-pwd
-ls -la .
-echo "******"
+
 aws cloudformation validate-template \
     --template-body file://template.yaml
  

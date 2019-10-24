@@ -11,7 +11,7 @@ Globals:
 Parameters:
   TableName:
     Type: String
-    Default: 'Fraud_data'
+    Default: 'FraudData'
     Description: (Required) The name of the new DynamoDB table you want to create and save to. Minimum 3 characters
     MinLength: 3
     MaxLength: 50
@@ -27,10 +27,10 @@ Resources:
       Runtime: python3.6
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: 'Fraud_data'
+            TableName: !Ref TableName
       Environment:
         Variables:
-          TABLE_NAME: 'Fraud_data'
+          TABLE_NAME: !Ref TableName    
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -40,7 +40,7 @@ Resources:
   DynamoDBTable:
     Type: 'AWS::DynamoDB::Table'
     Properties:
-      TableName: 'Fraud_data'
+      TableName: !Ref TableName
       AttributeDefinitions:
         - AttributeName: itemId
           AttributeType: S

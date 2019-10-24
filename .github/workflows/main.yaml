@@ -1,0 +1,21 @@
+name: Deploy Lambda Function on push
+on: push
+jobs:
+  build:
+    name: Test action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: ./
+        env:
+          AWS_DEFAULT_REGION: "us-east-1"
+          LAMBDA_FUNC_NAME: "vueTestingSuite"
+          LAMBDA_RUNTIME: "python3.7"
+          LAMBDA_HANDLER: "lambda_function"
+          LAMBDA_MEMORY: 1024
+          LAMBDA_TIMEOUT: 40
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+a

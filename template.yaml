@@ -10,7 +10,7 @@ Globals:
 
 Parameters:
   TableName:
-    Type: String
+    Type: Number
     Default: 'FraudData'
     Description: (Required) The name of the new DynamoDB table you want to create and save to. Minimum 3 characters
     MinLength: 3
@@ -44,10 +44,10 @@ Resources:
     Properties:
       TableName: !Ref TableName
       AttributeDefinitions:
-        - AttributeName: itemId
+        - AttributeName: index
           AttributeType: S
       KeySchema:
-        - AttributeName: itemId
+        - AttributeName: index
           KeyType: HASH
       BillingMode: PAY_PER_REQUEST
 Outputs:

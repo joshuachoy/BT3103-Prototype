@@ -11,6 +11,7 @@ import time
 import pandas as pd
 import boto3
 import doctest
+import csv
 
 try:
     from StringIO import StringIO
@@ -19,14 +20,18 @@ except ImportError:
 
 #from pandas.compat import StringIO
 
-
 def lambda_handler(event, context):
-     # TODO implement
-    dynamodb = boto3.resource("dynamodb", region_name = "us-east-1")
-    table = dynamodb.Table("FraudData")
+    # TODO implement
+    s3 = boto3.client('s3')
+    # dynamodb = boto3.client('dynamodb', region_name = "us-east-1")
+    recList = []
+    obj = s3.get_object(Bucket = "mylambdacollection2aeron", Key = "short_data.csv")
     
-    response = table.scan()
-
+    recList = obj["Body"].read().decode("utf-8").split("\n")
+    firstrecord = True
+    csv_reader = csv.reader(recList, delimiter = ",", quotechar = '"')
+    counter = 0
+    
     index_lst = []
     type_lst = []
     amount_lst = []
@@ -35,22 +40,27 @@ def lambda_handler(event, context):
     oldbalanceDest_lst = []
     newbalanceDest_lst = []
     isFraud_lst = []
-    for i in response['Items']:
-        index_lst.append(i['index'])
-        type_lst.append(i['type'])
-        amount_lst.append(i['amount'])
-        oldbalanceOrig_lst.append(i['oldbalanceOrig'])
-        newbalanceOrig_lst.append(i['newbalanceOrig'])
-        oldbalanceDest_lst.append(i['oldbalanceDest'])
-        newbalanceDest_lst.append(i['newbalanceDest'])
-        isFraud_lst.append(i['isFraud'])
+    for row in csv_reader:
+        if counter == 501:
+            break
+        counter += 1
+        if (firstrecord):
+            firstrecord = False
+            continue
+        if len(row) != 0:
+            index_lst.append(row[0])
+            type_lst.append(row[1])
+            amount_lst.append(row[2])
+            oldbalanceOrig_lst.append(row[3])
+            newbalanceOrig_lst.append(row[4])
+            oldbalanceDest_lst.append(row[5])
+            newbalanceDest_lst.append(row[6])
+            isFraud_lst.append(row[7])
     
     d = {'index': index_lst, 'type': type_lst, 'amount': amount_lst, 'oldbalanceOrig': oldbalanceOrig_lst,
         'newbalanceOrig': newbalanceOrig_lst, 'oldbalanceDest': oldbalanceDest_lst, 'newbalanceDest': newbalanceDest_lst, 'isFraud': isFraud_lst}
     df = pd.DataFrame(data=d)
     
-    
-
     ####################################################### Codes to Run Website Comes Below ###################################################################
 
 
@@ -179,7 +189,7 @@ def lambda_handler(event, context):
     method = event.get('httpMethod',{}) 
         
     s3 = boto3.client("s3")
-    file_obj = s3.get_object(Bucket = "mylambdajosh", Key = "test-project.html")
+    file_obj = s3.get_object(Bucket = "mylambdajosh", Key = "project-stock.html")
     indexPage = file_obj["Body"].read().decode('utf-8')
     
     if method == 'GET':

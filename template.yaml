@@ -45,7 +45,7 @@ Resources:
       TableName: !Ref TableName
       AttributeDefinitions:
         - AttributeName: index
-          AttributeType: S
+          AttributeType: HASH
       KeySchema:
         - AttributeName: index
           KeyType: HASH

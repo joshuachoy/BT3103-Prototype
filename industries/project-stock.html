@@ -87,12 +87,12 @@
     
       <div class="container" id="vueOnly">
         <div class="row">
-          <div class="col-12" style="margin-top: -150px;">
-            <p><img src="https://mylambdajosh.s3.amazonaws.com/images/stock3.jpg" alt="Image" class="img-fluid"></p>
-          </div>
+          <!--div class="col-12" style="margin-top: -150px;">
+            <p><img src="https://mylambdajosh.s3.amazonaws.com/images/stock3.jpg" alt="Image" class="img-fluid" style="height:500px; width: 100%"></p>
+          </div-->
         </div>
         <div class="row justify-content-center">
-          <div class="col-md-8 mb-5">
+          <div class="col-md-8 md-5" style = "font-size:15px">
             <h1>Overview</h1>           
 
             <p> Welcome to PanDuh's Fraud Detection Panda project! This project will utilize pandas to explore a dataset that contains fradulent transactions.</p>
@@ -103,18 +103,18 @@
         </div>
 
         <div class="row justify-content-center">
-          <div class="col-md-8 mb-5">
+          <div class="col-md-8 mb-5" style = "font-size:15px">
             <h1> Dataset </h1>
             <p>Loaded in the table below is the dataset. Take some time to explore the data.</p>
 
-            <iframe width="1200" height="1200" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTxLAhPejZjOPpuM7jgq6vhy6Y5FVqAV_oK0JKlrc1PsR9IPEAp1eccHHS74YJvWAdsyam2JP-w3btJ/pubhtml?gid=1157778684&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+            <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTxLAhPejZjOPpuM7jgq6vhy6Y5FVqAV_oK0JKlrc1PsR9IPEAp1eccHHS74YJvWAdsyam2JP-w3btJ/pubhtml?gid=1157778684&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
 
           </div>
         </div>
 
         <div class="row justify-content-center">
-          <div class="col-md-8">
+          <div class="col-md-8" style = "font-size:15px">
             <p> The Fraud Dataset provided contains 500 rows and 7 columns. </p>
             <p> The columns are: </p>
             <p> 1) index: specifies the row ID in dataset </p>
@@ -129,11 +129,11 @@
         </div>
 
         <div class="row justify-content-center">
-          <div class="col-md-8">     
+          <div class="col-md-8" style = "font-size:15px">      
             &nbsp;&nbsp;&nbsp;&nbsp;.
-            <h1> 0. Let's get started and install Pandas package in your desktop! </h1>
-            <iframe width="600" height="600" src="https://www.youtube.com/embed/8Sipkd9vNKk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            &nbsp;&nbsp;&nbsp;&nbsp;.
+            <h1> Let's get started and install Pandas package in your desktop! </h1>
+
+            <iframe style ="width:800px; height:500px;" src="https://www.youtube.com/embed/8Sipkd9vNKk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
             
             <h1> 1. Load in File</h1>
@@ -150,7 +150,39 @@
               <li> For Excel file </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/loadexcel.html" width="100%"></iframe>
             </ul>
-            <p>How do we open a text file named “StockData” that has tabs between data?</p>
+
+            <mcq-test v-bind:int-Question=0></mcq-test>
+
+            
+
+
+            
+            <!-- THIS PART BELOW WORKS -->
+            <!--div style = "border-style: groove">
+              <div style = "background-color: rgba(42, 50, 161, 0.774); width: 100%; height: 45px; text-align: center; padding: 1% 3%"><p style = "font-size: 15px; text-align:center; color: white">How do we open a text file named “StockData” that has tabs between data?</p></div>
+              <div style = "width: 100%;">
+                <button style = "width: 100%; height: 30px; padding: 1% 3%; background-color: white; border-style: solid; border-width: 1.5px " onclick="check(this, 'A')" >df = pd.read_excel(“StockData.txt”)</button>
+                <button style = "width: 100%; height: 30px; padding: 1% 3%; background-color: white; border-style: solid; border-width: 1.5px " onclick="check(this, 'B')" >df = pd.read_csv((“StockData.txt”, delimiter = “/t”)</button>
+                <button style = "width: 100%; height: 30px; padding: 1% 3%; background-color: white; border-style: solid; border-width: 1.5px " onclick="check(this, 'C')" >df = pd.read_csv(“StockData.txt”, delimiter = “,”)</button>
+              </div>
+            </div>
+            <script>
+              function check(_this, answer){
+                if (answer == 'B'){
+                    _this.style.backgroundColor = "#76C648";
+                    
+                  }else{
+                    _this.style.backgroundColor = "#E64E28";
+                  }
+                    
+                  
+              }
+            </script-->
+            
+
+
+
+            <!--p>How do we open a text file named “StockData” that has tabs between data?</p>
 
                 <form name="myForm">
                     <input type="radio" name="myRadios"  value="1" >df = pd.read_excel(“StockData.txt”)<br>
@@ -172,9 +204,8 @@
                         }
                     };
                 }
-                </script>
-            <p style="color:red;"> Checkpoint: Question insert here for user to practice loading in data. </p>
-
+                </script-->
+            <!--p style="color:red;"> Checkpoint: Question insert here for user to practice loading in data. </p-->           
             <h2> 1.2. Checking Loaded Data </h2>
             <p> Always make it a practice to check that our data has been loaded correctly (meaning all columns and rows are loaded). </p>
             <p> Step 1: Check the number of rows and columns. </p>
@@ -193,21 +224,9 @@
         <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
         <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
         </head>
-        <body>
-          <h1>Q1. Checking Loaded Data Activity</h1>
-          <div>
-              <doctest-activity v-bind:layout-things=questions[0].layoutItems v-bind:question-name=questions[0].name>
-          </div>
-        </body>
-        <body>
-          <h1>Q2. Get First Few Rows Activity</h1>
-            <div>
-              <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].name>
-            </div>
-        </body>
-        
+
         <div class="row justify-content-center">
-          <div class="col-md-8">
+            <div class="col-md-8" style = "font-size:15px">
               <p> Step 2: Check the first few rows. </p>
               <ul>
                 <li> Display first 5 rows of data. </li>
@@ -222,8 +241,19 @@
                 <li> Display last 20 rows of data. </li>
                 <iframe src="https://mylambdajosh.s3.amazonaws.com/showLast20.html" width="100%"></iframe>
               </ul>
-              <p style="color:red;"> Checkpoint: Question insert here for user to practice checking first/last few rows of data. </p>
+              <!--p style="color:red;"> Checkpoint: Question insert here for user to practice checking first/last few rows of data. </p-->
+              
+              <mcq-test v-bind:int-Question=1></mcq-test>
 
+              <div>
+              <h3>Section 1 Post-Activity 1</h3>
+                  <doctest-activity v-bind:layout-things=questions[0].layoutItems v-bind:question-name=questions[0].name></doctest-activity>
+              <br>
+              <h3>Section 1 Post-Activity 2</h3>
+                  <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].name></doctest-activity>
+              <div> 
+
+              <br>
               <h1> 2. Data Exploration </h1>
               <h2> Exploratory Data Analysis </h2>
               <p> Exploratory Data Analysis (EDA) is performed in which mean, standard deviation and correlation etc. are found between variables. This gives us a better understanding of the data we are dealing with. </p>
@@ -256,10 +286,11 @@
               <div class="row justify-content-center">
                 <div class="col-md-8 mb-5">
                   <h3> df.corr() </h3>
-                  <iframe width="830" height="400" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=0&single=true"></iframe>
+                  <iframe style = "width:1200px; height:300px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=0&single=true"></iframe>
                 </div>
               </div>
-              <p style="color:red;"> Checkpoint: Question insert here for user to perform EDA on data. </p>
+              <!--p style="color:red;"> Checkpoint: Question insert here for user to perform EDA on data. </p-->
+              <mcq-test v-bind:int-Question=2></mcq-test>
 
               <h1> 3. Data Cleaning </h1>
               <h2> 3.1. Checking for NA rows and columns </h2>
@@ -272,7 +303,7 @@
               <div class="row justify-content-center">
                 <div class="col-md-8 mb-5">
                   <h3> df.isNull() </h3>
-                  <iframe width="830" height="400" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=1148384071&single=true"></iframe>
+                  <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=1148384071&single=true"></iframe>
                 </div>
               </div>
               <p> Step 2: More concise method to checking for null values. </p>
@@ -287,7 +318,8 @@
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfDropNA.html" width="100%"></iframe>
               <p> Method 2: Replacing null values with the computed mean of column/variable. </p>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfReplaceNA.html" width="100%"></iframe>
-              <p style="color:red;"> Checkpoint: Question insert here for user to practice cleaning data. </p>
+              <!--p style="color:red;"> Checkpoint: Question insert here for user to practice cleaning data. </p-->
+              <mcq-test v-bind:int-Question=3></mcq-test>
 
               <h1> 4. Subsetting Data </h1>
               <h2> 4.1. Subsetting based on a single condition </h2>
@@ -300,7 +332,8 @@
               <p> | refers to “or” where either condition has to be satisfied. </p>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfSubsetMultiple.html" width="100%"></iframe>
               <p style="color:red;"> Show output table here. </p>
-              <p style="color:red;"> Checkpoint: Question insert here for user to practice subsetting data. </p>
+              <!--p style="color:red;"> Checkpoint: Question insert here for user to practice subsetting data. </p-->
+              <mcq-test v-bind:int-Question=4></mcq-test>
 
               <h1> 5. Sorting Data </h1>
               <h2> 5.1. Sorting in Ascending Order </h2>
@@ -309,7 +342,7 @@
               <div class="row justify-content-center">
                 <div class="col-md-8 mb-5">
                   <h3> Sorting - Ascending Order </h3>
-                  <iframe width="830" height="400" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=411973687&single=true"></iframe>
+                  <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=411973687&single=true"></iframe>
                 </div>
               </div>
 
@@ -318,10 +351,11 @@
               <div class="row justify-content-center">
                 <div class="col-md-8 mb-5">
                   <h3> Sorting - Descending Order </h3>
-                  <iframe width="830" height="400" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=1748770864&single=true"></iframe>
+                  <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=1748770864&single=true"></iframe>
                 </div>
               </div>
-              <p style="color:red;"> Checkpoint: Question insert here for user to practice sorting data. </p>
+              <!--p style="color:red;"> Checkpoint: Question insert here for user to practice sorting data. </p-->
+              <mcq-test v-bind:int-Question=5></mcq-test>
 
               <p><a href="#" class="btn btn-primary py-3 px-3">Try Project!</a></p>
             </div>
@@ -370,7 +404,7 @@
         </div>
         <div class="row">
           <div class="col-12 text-md-center text-left">
-             <p>
+             <!p>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               Copyright &copy;
               <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
@@ -463,6 +497,158 @@
             </md-card>\
             </div></div>\
             '
+    })
+
+    Vue.component('mcq-test', {
+        props:['intQuestion'],
+        data: function () {
+            return {
+              //integer: this.intQuestion,
+              mcq:[
+              {name: "mcq1", question: "How do you open a text file named 'StockData' that has tabs between them?",
+              choiceA: "df = pd.read_excel('StockData.txt')",
+              choiceB: "df = pd.read_csv('StockData.txt', delimiter = '\t')",
+              choiceC: "df = pd.read_csv('StockData.txt', delimiter = ',')",
+              correct: "B",
+              checkedGreen: false,
+              checkedRed: false,
+              user: "",
+              resA: "read excel doesn't open text files. Try Again!",
+              resB: "Awesome!",
+              resC: "delimiter = ',' is for comma separated data files only. Try Again!",
+              response: ""
+              },
+              {name: "mcq2", question: "What is the command to see the first 5 rows of the dataframe?",
+              choiceA: "df.head()",
+              choiceB: "df.tail()",
+              choiceC: "df.first()",
+              correct: "A",
+              checkedGreen: false,
+              checkedRed: false,
+              user: "",
+              resA: "Awesome!",
+              resB: "tail() sounds like it is the end of the dataframe. Try Again!",
+              resC: "first() doesn't sound familiar. Try Again!",
+              response: ""
+              },
+              {name: "mcq3", question: "Will variables of string data type appear in the Table of means?",
+              choiceA: "I don't know",
+              choiceB: "Yes, variables of string data type will have a mean value",
+              choiceC: "No, the means of variables with string data type will not be computed",
+              correct: "C",
+              checkedGreen: false,
+              checkedRed: false,
+              user: "",
+              resA: "Try it out! You can do it!",
+              resB: "A mean value for string data type?",
+              resC: "Awesome",
+              response: ""
+              },
+              {name: "mcq4", question: "Which of the following will return a matrix of total null values for each column?",
+              choiceA: "df",
+              choiceB: "df.isnull().sum()",
+              choiceC: "df.isnull()",
+              correct: "B",
+              checkedGreen: false,
+              checkedRed: false,
+              user: "",
+              resA: "df returns the entire dataframe",
+              resB: "Awesome!",
+              resC: "df.isnull() returns a dataframe populated with Boolean values that indicates if the cell is null or not",
+              response: ""
+              },
+              {name: "mcq5", question: "What is the correct code to subset data where 'profit' is at least $150 OR 'loss' == 0?",
+              choiceA: "df[ (df['profit'] >= 150) | (df['loss'] == 0)]",
+              choiceB: "df[ (df['profit'] >= 150) & (df['loss'] == 0)]",
+              choiceC: "This is too hard!",
+              correct: "A",
+              checkedGreen: false,
+              checkedRed: false,
+              user: "",
+              resA: "Awesome!",
+              resB: "'&' symbol represents 'AND'. Recall what symbol represents 'OR'",
+              resC: "Don't Give Up! :)",
+              response: ""
+              },
+              {name: "mcq6", question: "What is the default sorting for function sort_values?",
+              choiceA: "Ascending",
+              choiceB: "Values will not be sorted",
+              choiceC: "Descending",
+              correct: "A",
+              checkedGreen: false,
+              checkedRed: false,
+              user: "",
+              resA: "Awesome!",
+              resB: "It will be sorted! Try Again! :)",
+              resC: "Recall what is the additional parameter that is in the function sort_value.",
+              response: ""
+              },
+
+
+            ]
+        }
+        },
+        methods: {
+            checkAnswer: function(answer) {       //intQuestion should be 1, 2 or 3 depending on order of qns
+                                                                //answer should be the "A", "B" or "C"
+              //console.log(this.intQuestion)
+              this.user = answer;
+              //intQuestion = parseInt(this.$props.intquestion);
+              if (answer == "A"){
+                this.response = this.mcq[this.intQuestion].resA;
+                console.log("goes into A")
+              }else if(answer == "B"){
+                this.response = this.mcq[this.intQuestion].resB;
+                console.log("goes into B")
+              }else if(answer == "C"){
+                this.response = this.mcq[this.intQuestion].resC;
+                console.log("goes into C")
+              }else{
+                this.response = "Try Again"
+              }
+
+              this.mcq[this.intQuestion].checkedGreen = false;
+              this.mcq[this.intQuestion].checkedRed =  false;
+
+              if (this.mcq[this.intQuestion].correct == answer){
+                this.mcq[this.intQuestion].checkedGreen =  true;
+                this.mcq[this.intQuestion].checkedRed =  false;
+              }else{
+                this.mcq[this.intQuestion].checkedRed =  true;
+                this.mcq[this.intQuestion].checkedGreen =  false;
+              }
+              
+              console.log(this.response)
+            }
+        },
+        computed:{
+          buttonStyles(){
+            if(this.mcq[this.intQuestion].checkedGreen == true){
+              color = "#228B22"
+            }else if(this.mcq[this.intQuestion].checkedRed == true){
+              color = "#B22222"
+            }else{
+              color = "white"
+            }
+            return{
+              backgroundColor: color
+            }
+          }
+        },
+        template:`<div style = "padding: 3%">
+                    <div class = "md-subheading TableTitle" style = "border-style: groove">\
+                      <div style="backgroundColor: grey; height:50px; text-align:center; vertical-align:middle; line-height: 40px; font-size:18px; color: white">{{ this.mcq[this.intQuestion].question}}</div>\
+                      <button  style = "font-size:15px; backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('A')">{{ this.mcq[this.intQuestion].choiceA}}</button>\
+                      <button style = "font-size:15px;backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('B')">{{ this.mcq[this.intQuestion].choiceB}}</button>\
+                      <button style = "font-size:15px;backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('C')">{{ this.mcq[this.intQuestion].choiceC}}</button>\
+                    </div>
+                    <br>
+                    <div v-bind:style="buttonStyles" style="border-style:groove; height:100px; width:100%; padding: 2%">
+                      <p style = "font-weight: bold; font-size:18px; color: black; font-weight:medium" class = "md-subheading TableTitle">Results</p>
+                      <p style = "color: black; text-align: center" class = "md-subheading TableTitle">{{this.response}}</p>
+                    </div>
+                  </div>
+                  `
     })
     
     new Vue({

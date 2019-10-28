@@ -25,7 +25,7 @@ def lambda_handler(event, context):
     s3 = boto3.client('s3')
     # dynamodb = boto3.client('dynamodb', region_name = "us-east-1")
     recList = []
-    obj = s3.get_object(Bucket = "mylambdacollection2aeron", Key = "short_data.csv")
+    obj = s3.get_object(Bucket = "mylambdajosh", Key = "short_data.csv")
     
     recList = obj["Body"].read().decode("utf-8").split("\n")
     firstrecord = True

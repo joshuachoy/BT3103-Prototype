@@ -9,6 +9,7 @@ jobs:
       - uses: ./
         env:
           AWS_DEFAULT_REGION: "us-east-1"
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3.BUCKET }}
           LAMBDA_FUNC_NAME: "Pandas"
           LAMBDA_RUNTIME: "python3.7"
           LAMBDA_HANDLER: "lambda_function"

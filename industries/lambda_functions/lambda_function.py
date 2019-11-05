@@ -215,13 +215,15 @@ def lambda_handler(event, context):
         
         
         allTestCases = {"question 1": ">>> df.shape\n(500,8)",                                              #! Edited Here NOTE THAT FOR TUPLES, CANNOT LEAVE SPACE AFTER COMMA!
-                        "question 2": ">>> df.head()\n" + df.head().to_string().replace("\n", "--")
+                        "question 2": ">>> df.head()\n" + df.head().to_string().replace("\n", "--"),
+                        "question 3": ">>> df.mean()\n" + df.mean().to_string().replace("\n", "--")
                         }
         
         
         
         questionType = {"question 1": "non-dataframe",
-                        "question 2": "dataframe"}
+                        "question 2": "dataframe",
+                        "question 3": "dataframe"}
                         
         testCases = allTestCases[question] 
         #testCases = ">>> df.shape\n(500,8)"                                     #! Edited Here

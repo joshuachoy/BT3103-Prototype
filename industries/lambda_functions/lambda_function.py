@@ -196,17 +196,27 @@ def lambda_handler(event, context):
 
 
             elif questionType == "series":                  # For the series question type, expected answer is written to output the dataframe of series
-                expected = test.want[:-1].replace("--", "\n")
+                expected = test.want.replace("--", "\n")
                 expected = pd.read_csv(StringIO(expected), sep = "\s+")
                 
-                got = pd.DataFrame(got, columns = ["Mean"])
-
+                #got = eval(namespace["YOUR_SOLUTION"], {"df": df})
+                got = got.to_string().replace("\n", "--")
+                got = test.want.replace("--", "\n")
+                got = pd.read_csv(StringIO(got), sep = "\s+")
+                
+                print(got)
+                print(got.equals(expected))
+                
+                
+                
+                #print(type(got))
+                #got = pd.DataFrame(got, columns = ["Mean"])
                 if got.equals(expected):
                     correct = True
                 else:
                     correct = False
                     solved = False
-                
+
                 expected = expected.to_html()
                 got = got.to_html()
 
@@ -214,6 +224,7 @@ def lambda_handler(event, context):
             resultDict = {'call': call, 'expected': expected, 'received': "%(got)s" % {'got': got}, 'correct': correct, "questionType": questionType}    #! Edited Here
             resultList.append(resultDict)
         return resultList, solved
+    
     
     method = event.get('httpMethod',{}) 
         
@@ -253,7 +264,7 @@ def lambda_handler(event, context):
         
         questionType = {"question 1": "non-dataframe",
                         "question 2": "dataframe",
-                        "question 3": "dataframe"}
+                        "question 3": "series"}
                         
         testCases = allTestCases[question] 
         #testCases = ">>> df.shape\n(500,8)"                                     #! Edited Here

@@ -82,14 +82,13 @@
     <div class="container" id="vueOnly">
       <div class="row justify-content-center">
         <div class="col-md-8 md-5" style = "font-size:15px">
-            
           <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'LoadInFile')">Load in Data</button>
-            <button class="tablinks" onclick="openTab(event, 'DataEx')">Data Exploration</button>
-            <button class="tablinks" onclick="openTab(event, 'DataC')">Data Cleaning</button>
-            <button class="tablinks" onclick="openTab(event, 'SubData')">Subsetting Data</button>
-            <button class="tablinks" onclick="openTab(event, 'SortData')">Sorting Data</button>
-          </div>   
+            <button class="tablinks" onclick="openTab('LoadInFile')">Load in Data</button>
+            <button class="tablinks" onclick="openTab('DataEx')">Data Exploration</button>
+            <button class="tablinks" onclick="openTab('DataC')">Data Cleaning</button>
+            <button class="tablinks" onclick="openTab('SubData')">Subsetting Data</button>
+            <button class="tablinks" onclick="openTab('SortData')">Sorting Data</button>
+          </div>  
 
           <div id="LoadInFile" class="tabcontent">
             <h1>Overview</h1>           
@@ -181,7 +180,7 @@
             <br>
           </div>
       
-          <div id="DataEx" class="tabcontent">
+          <div id="DataEx" class="tabcontent" style="display:none">
             <h1> 2. Data Exploration </h1>
             <h2> Exploratory Data Analysis </h2>
             <p> Exploratory Data Analysis (EDA) is performed in which mean, standard deviation and correlation etc. are found between variables. This gives us a better understanding of the data we are dealing with. </p>
@@ -220,7 +219,7 @@
             <mcq-test v-bind:int-Question=2></mcq-test>
           </div>
 
-          <div id="DataC" class="tabcontent">
+          <div id="DataC" class="tabcontent" style="display:none">
             <h1> 3. Data Cleaning </h1>
             <h2> 3.1. Checking for NA rows and columns </h2>
             <p> In reality, datasets are full of inconsistencies such as missing values due to poor data collection and management practices. To avoid running into errors when furthering our analysis, we need to clean our data. </p>
@@ -248,7 +247,7 @@
             <mcq-test v-bind:int-Question=3></mcq-test>
           </div>
 
-          <div id="SubData" class="tabcontent">
+          <div id="SubData" class="tabcontent" style="display:none">
             <h1> 4. Subsetting Data </h1>
             <h2> 4.1. Subsetting based on a single condition </h2>
             <p> Understanding data better by subsetting smaller sections that are of our interest. </p>
@@ -263,7 +262,7 @@
             <mcq-test v-bind:int-Question=4></mcq-test>
           </div>
 
-          <div id="SortData" class="tabcontent">
+          <div id="SortData" class="tabcontent" style="display:none">
             <h1> 5. Sorting Data </h1>
             <h2> 5.1. Sorting in Ascending Order </h2>
             <p> Sorting can help to easily identify the largest or smallest rows of data. </p>
@@ -363,18 +362,13 @@
     <script src="https://unpkg.com/vue-material@beta"></script>
     <script>
 
-    function openTab(evt, tabName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    function openTab(tabName) {
+      var i;
+      var x = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
       }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.className += " active";
+      document.getElementById(tabName).style.display = "block";  
     }
     
     Vue.use(VueMaterial.default)
@@ -637,4 +631,46 @@
     </script>
     
   </body>
+  <style>
+    body {
+      font-family: Arial;
+    }
+    
+    /* Style the tab */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+    
+    /* Style the buttons inside the tab */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+    
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+    
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+    
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+  </style>
 </html>

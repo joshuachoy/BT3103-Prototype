@@ -182,6 +182,19 @@ def lambda_handler(event, context):
                 # else:
                 #     correct = False
                 #     solved = False
+
+            elif questionType == "int":
+                expected = eval(test.want)
+                correct = True
+                got = round(got, 2)
+                if got == expected:
+                    correct = True
+                else:
+                    correct = False
+                    solved = False
+
+
+
             elif questionType == "series":                  # For the series question type, expected answer is written to output the dataframe of series
                 expected = test.want[:-1].replace("--", "\n")
                 expected = pd.read_csv(StringIO(expected), sep = "\s+")
@@ -232,15 +245,15 @@ def lambda_handler(event, context):
 
         allTestCases = {"question 1": ">>> df.shape\n(500,8)",                                              #! Edited Here NOTE THAT FOR TUPLES, CANNOT LEAVE SPACE AFTER COMMA!
                         "question 2": ">>> df.head()\n" + df.head().to_string().replace("\n", "--"),
-                        #"question 3": ">>> df.mean()\n" + pd.DataFrame(df.mean(), columns = ["Mean"]).to_string().replace("\n", "--")
-                        "question 3": ">>> df['amount'].mean()\n" + str(df['amount'].mean())
+                        "question 3": ">>> df.mean()\n" + pd.DataFrame(df.mean(), columns = ["Mean"]).to_string().replace("\n", "--")
+                        #"question 3": ">>> df['amount'].mean()\n" + str(143360.8)
                         }
-        
+
         
         
         questionType = {"question 1": "non-dataframe",
                         "question 2": "dataframe",
-                        "question 3": "non-dataframe"}
+                        "question 3": "dataframe"}
                         
         testCases = allTestCases[question] 
         #testCases = ">>> df.shape\n(500,8)"                                     #! Edited Here

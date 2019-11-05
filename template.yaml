@@ -39,17 +39,6 @@ Resources:
           Properties:
             Path:  /
             Method: ANY
-  DynamoDBTable:
-    Type: 'AWS::DynamoDB::Table'
-    Properties:
-      TableName: !Ref TableName
-      AttributeDefinitions:
-        - AttributeName: index
-          AttributeType: N
-      KeySchema:
-        - AttributeName: index
-          KeyType: HASH
-      BillingMode: PAY_PER_REQUEST
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM

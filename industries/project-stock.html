@@ -114,13 +114,13 @@
     
     <div class="container" id="vueOnly">
       <div class="row justify-content-center">
+        <!-- <md-tabs>
+            <md-tab v-for="section in sections" :key=section.name v-bind:md-label=section.name+section.status onclick="openTab(section.name)">
+                <doctest-activity v-bind:layout-things=question.layoutItems v-bind:question-name=question.name  @questionhandler="toggleQuestionStatus"/>
+            </md-tab>
+        </md-tabs> -->
         <div class="col-md-8 md-5" style = "font-size:15px">
           <div class="tab">
-              <!-- <md-tabs> -->
-                  <!-- <md-tab v-for="section in sections" :key=section.name v-bind:md-label=section.name+section.status onclick="openTab(section.name)"> -->
-                      <!-- <doctest-activity v-bind:layout-things=question.layoutItems v-bind:question-name=question.name  @questionhandler="toggleQuestionStatus"/> -->
-                  <!-- </md-tab> -->
-              <!-- </md-tabs> -->
             <button class="tablinks" onclick="openTab('LoadInData')">Load in Data</button>
             <button class="tablinks" onclick="openTab('DataEx')">Data Exploration</button>
             <button class="tablinks" onclick="openTab('DataC')">Data Cleaning</button>
@@ -657,21 +657,24 @@
           }
         },
          methods: {
-            toggleQuestionStatus (response) {
-                const {data, questionName} = response
-                if (data.htmlFeedback) {
-                    const searchText = data.htmlFeedback
-                    searchText.search(/b2d8b2/) !== -1 ?
-                        searchText.search(/#ff9999/) == -1 ?
-                        this.questions.find(item => item.name === questionName).status = " ✔️"
-                        :
-                        this.questions.find(item => item.name === questionName).status = " 🤨"
-                    :
-                    this.questions.find(item => item.name === questionName).status = " 🔴"
-                }
-            }
+          toggleSectionStatus (response) {
+
+          },
+          toggleQuestionStatus (response) {
+              const {data, questionName} = response
+              if (data.htmlFeedback) {
+                  const searchText = data.htmlFeedback
+                  searchText.search(/b2d8b2/) !== -1 ?
+                      searchText.search(/#ff9999/) == -1 ?
+                      this.questions.find(item => item.name === questionName).status = " ✔️"
+                      :
+                      this.questions.find(item => item.name === questionName).status = " 🤨"
+                  :
+                  this.questions.find(item => item.name === questionName).status = " 🔴"
+              }
+          }
         }
-      }) //@questionhandler="toggleQuestionStatus"
+      })
     </script>
     
   </body>

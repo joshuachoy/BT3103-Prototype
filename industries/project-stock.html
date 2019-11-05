@@ -35,14 +35,14 @@
       }
       
       /* Style the tab */
-      .vueOnly {
+      .tab {
         overflow: hidden;
         border: 1px solid #ccc;
         background-color: #f1f1f1;
       }
       
       /* Style the buttons inside the tab */
-      .vueOnly button {
+      .tab button {
         background-color: inherit;
         float: left;
         border: none;
@@ -54,12 +54,12 @@
       }
       
       /* Change background color of buttons on hover */
-      .vueOnly button:hover {
+      .tab button:hover {
         background-color: #ddd;
       }
       
       /* Create an active/current tablink class */
-      .vueOnly button.active {
+      .tab button.active {
         background-color: #ccc;
       }
     </style>
@@ -114,21 +114,20 @@
     
     <div class="container" id="vueOnly">
       <div class="row justify-content-center">
-        <div class="vueOnly">
-            <!-- <md-tabs> -->
-                <!-- <md-tab v-for="section in sections" :key=section.name v-bind:md-label=section.name+section.status onclick="openTab(section.name)"> -->
-                    <!-- <doctest-activity v-bind:layout-things=question.layoutItems v-bind:question-name=question.name  @questionhandler="toggleQuestionStatus"/> -->
-                <!-- </md-tab> -->
-            <!-- </md-tabs> -->
-          <button class="tablinks" onclick="openTab('LoadInFile')">Load in Data</button>
-          <button class="tablinks" onclick="openTab('DataEx')">Data Exploration</button>
-          <button class="tablinks" onclick="openTab('DataC')">Data Cleaning</button>
-          <button class="tablinks" onclick="openTab('SubData')">Subsetting Data</button>
-          <button class="tablinks" onclick="openTab('SortData')">Sorting Data</button>
-        </div>
         <div class="col-md-8 md-5" style = "font-size:15px">
-
-          <div id="Load in Data" class="tabcontent">
+          <div class="tab">
+              <!-- <md-tabs> -->
+                  <!-- <md-tab v-for="section in sections" :key=section.name v-bind:md-label=section.name+section.status onclick="openTab(section.name)"> -->
+                      <!-- <doctest-activity v-bind:layout-things=question.layoutItems v-bind:question-name=question.name  @questionhandler="toggleQuestionStatus"/> -->
+                  <!-- </md-tab> -->
+              <!-- </md-tabs> -->
+            <button class="tablinks" onclick="openTab('LoadInData')">Load in Data</button>
+            <button class="tablinks" onclick="openTab('DataEx')">Data Exploration</button>
+            <button class="tablinks" onclick="openTab('DataC')">Data Cleaning</button>
+            <button class="tablinks" onclick="openTab('SubData')">Subsetting Data</button>
+            <button class="tablinks" onclick="openTab('SortData')">Sorting Data</button>
+          </div>
+          <div id="LoadInData" class="tabcontent">
             <h1>Overview</h1>           
 
             <p> Welcome to PanDuh's Fraud Detection Panda project! This project will utilize pandas to explore a dataset that contains fradulent transactions.</p>
@@ -218,7 +217,7 @@
             <br>
           </div>
       
-          <div id="Data Exploration" class="tabcontent" style="display:none">
+          <div id="DataEx" class="tabcontent" style="display:none">
             <h1> 2. Data Exploration </h1>
             <h2> Exploratory Data Analysis </h2>
             <p> Exploratory Data Analysis (EDA) is performed in which mean, standard deviation and correlation etc. are found between variables. This gives us a better understanding of the data we are dealing with. </p>
@@ -257,7 +256,7 @@
             <mcq-test v-bind:int-Question=2></mcq-test>
           </div>
 
-          <div id="Data Cleaning" class="tabcontent" style="display:none">
+          <div id="DataC" class="tabcontent" style="display:none">
             <h1> 3. Data Cleaning </h1>
             <h2> 3.1. Checking for NA rows and columns </h2>
             <p> In reality, datasets are full of inconsistencies such as missing values due to poor data collection and management practices. To avoid running into errors when furthering our analysis, we need to clean our data. </p>
@@ -285,7 +284,7 @@
             <mcq-test v-bind:int-Question=3></mcq-test>
           </div>
 
-          <div id="Subsetting Data" class="tabcontent" style="display:none">
+          <div id="SubData" class="tabcontent" style="display:none">
             <h1> 4. Subsetting Data </h1>
             <h2> 4.1. Subsetting based on a single condition </h2>
             <p> Understanding data better by subsetting smaller sections that are of our interest. </p>
@@ -300,7 +299,7 @@
             <mcq-test v-bind:int-Question=4></mcq-test>
           </div>
 
-          <div id="Sorting Data" class="tabcontent" style="display:none">
+          <div id="SortData" class="tabcontent" style="display:none">
             <h1> 5. Sorting Data </h1>
             <h2> 5.1. Sorting in Ascending Order </h2>
             <p> Sorting can help to easily identify the largest or smallest rows of data. </p>

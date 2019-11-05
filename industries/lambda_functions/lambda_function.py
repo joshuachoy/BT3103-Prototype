@@ -182,6 +182,22 @@ def lambda_handler(event, context):
                 # else:
                 #     correct = False
                 #     solved = False
+            elif questionType == "series":                  # For the series question type, expected answer is written to output the dataframe of series
+                expected = test.want[:-1].replace("--", "\n")
+                expected = pd.read_csv(StringIO(expected), sep = "\s+")
+                
+                got = pd.DataFrame(got, columns = ["Mean"])
+
+                if got.equals(expected):
+                    correct = True
+                else:
+                    correct = False
+                    solved = False
+                
+                expected = expected.to_html()
+                got = got.to_html()
+
+
             resultDict = {'call': call, 'expected': expected, 'received': "%(got)s" % {'got': got}, 'correct': correct, "questionType": questionType}    #! Edited Here
             resultList.append(resultDict)
         return resultList, solved
@@ -213,17 +229,18 @@ def lambda_handler(event, context):
         #                 "question 2": ">>> df.head()\n" + dataFrames_test_ans[question]
         #                 }
         
-        
+
         allTestCases = {"question 1": ">>> df.shape\n(500,8)",                                              #! Edited Here NOTE THAT FOR TUPLES, CANNOT LEAVE SPACE AFTER COMMA!
                         "question 2": ">>> df.head()\n" + df.head().to_string().replace("\n", "--"),
-                        "question 3": ">>> df.mean()\n" + df.mean().to_string().replace("\n", "--")
+                        "question 3": ">>> df.mean()\n" + pd.DataFrame(df.mean(), columns = ["Mean"]).to_string().replace("\n", "--")
+                        #"question 3": ">>> df.mean()\n" + df.mean().to_string().replace("\n", "--")
                         }
         
         
         
         questionType = {"question 1": "non-dataframe",
                         "question 2": "dataframe",
-                        "question 3": "dataframe"}
+                        "question 3": "series"}
                         
         testCases = allTestCases[question] 
         #testCases = ">>> df.shape\n(500,8)"                                     #! Edited Here

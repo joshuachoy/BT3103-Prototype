@@ -468,7 +468,7 @@
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify({name: {0:this.questionName}, editable:{0:this.layoutItems[0].vModel}})          <!-- Edited Here -->
+        body: JSON.stringify({name: {0:this.questionName}, editable:{0:this.layoutItems[0].vModel}})          //<!-- Edited Here -->
         }).then(response => {
             return response.json()
         }).then(data => {

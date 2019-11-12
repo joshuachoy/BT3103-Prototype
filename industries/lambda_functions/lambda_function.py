@@ -256,15 +256,20 @@ def lambda_handler(event, context):
 
         allTestCases = {"question 1": ">>> df.shape\n(500,8)",                                              #! Edited Here NOTE THAT FOR TUPLES, CANNOT LEAVE SPACE AFTER COMMA!
                         "question 2": ">>> df.head()\n" + df.head().to_string().replace("\n", "--"),
-                        "question 3": ">>> df.mean()\n" + pd.DataFrame(df.mean(), columns = ["Mean"]).to_string().replace("\n", "--")
-                        #"question 3": ">>> df['amount'].mean()\n" + str(143360.8)
+                        "question 3": ">>> df.mean()\n" + pd.DataFrame(df.mean(), columns = ["Mean"]).to_string().replace("\n", "--"),
+                        #"question 4": ">>> df.isnull()\n" +  df.isnull().to_string().replace("\n", "--"),
+                        "question 5": ">>> df[df['amount'] > 100]\n" + df[df['amount'] > 100].to_string().replace("\n", "--"),
+                        "question 6": ">>> df.sort_values('newbalanceDest', ascending = False)\n" + df.sort_values('newbalanceDest', ascending = False).to_string().replace("\n", "--")
                         }
 
         
         
         questionType = {"question 1": "non-dataframe",
                         "question 2": "dataframe",
-                        "question 3": "series"}
+                        "question 3": "series",
+                        # "question 4": "dataframe",
+                        "question 5": "dataframe",
+                        "question 6": "dataframe"}
                         
         testCases = allTestCases[question] 
         #testCases = ">>> df.shape\n(500,8)"                                     #! Edited Here

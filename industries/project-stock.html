@@ -212,9 +212,6 @@
             <h3>Section 1 Post-Activity 2</h3>
                 <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].name></doctest-activity>
             <br>
-            <h3>Section 3 Post-Activity 1</h3>
-                <doctest-activity v-bind:layout-things=questions[2].layoutItems v-bind:question-name=questions[2].name></doctest-activity>
-            <br>
           </div>
       
           <div id="DataEx" class="tabcontent" style="display:none">
@@ -248,12 +245,17 @@
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfCorr.html" width="100%"></iframe>
             </ul>
             <div class="row justify-content-center">
-              <div class="col-md-8 mb-5">
+              <!-- <div class="col-md-8 mb-5"> -->
+              <div>
                 <h3> df.corr() </h3>
-                <iframe style = "width:1200px; height:300px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=0&single=true"></iframe>
+                <iframe style = "width:1200px; height:250px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=0&single=true"></iframe>
               </div>
             </div>
             <mcq-test v-bind:int-Question=2></mcq-test>
+            <h3>Section 2 Post-Activity</h3>
+                <doctest-activity v-bind:layout-things=questions[2].layoutItems v-bind:question-name=questions[2].name></doctest-activity>
+            <br>
+
           </div>
 
           <div id="DataC" class="tabcontent" style="display:none">
@@ -282,6 +284,11 @@
             <p> Method 2: Replacing null values with the computed mean of column/variable. </p>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfReplaceNA.html" width="100%"></iframe>
             <mcq-test v-bind:int-Question=3></mcq-test>
+            
+            <!-- <h3>Section 3 Post-Activity</h3>
+              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].name></doctest-activity>
+            <br> -->
+
           </div>
 
           <div id="SubData" class="tabcontent" style="display:none">
@@ -297,6 +304,11 @@
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfSubsetMultiple.html" width="100%"></iframe>
             <p style="color:red;"> Show output table here. </p>
             <mcq-test v-bind:int-Question=4></mcq-test>
+
+
+            <h3>Section 4 Post-Activity</h3>
+              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].name></doctest-activity>
+            <br>
           </div>
 
           <div id="SortData" class="tabcontent" style="display:none">
@@ -305,21 +317,29 @@
             <p> Sorting can help to easily identify the largest or smallest rows of data. </p>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfSortingAscending.html" width="100%"></iframe>
             <div class="row justify-content-center">
-              <div class="col-md-8 mb-5">
+              <!-- <div class="col-md-8 mb-5"> -->
+
+              <div>
                 <h3> Sorting - Ascending Order </h3>
                 <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=411973687&single=true"></iframe>
               </div>
             </div>
-
+            <br>
             <h2> 5.2. Sorting in Descending Order </h2>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfSortingDescending.html" width="100%"></iframe>
             <div class="row justify-content-center">
-              <div class="col-md-8 mb-5">
+              
+              <div>
+              <!-- <div class="col-md-8 mb-5"> -->
                 <h3> Sorting - Descending Order </h3>
                 <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=1748770864&single=true"></iframe>
+                <mcq-test v-bind:int-Question=5></mcq-test>
               </div>
+
             </div>
-            <mcq-test v-bind:int-Question=5></mcq-test>
+            <h3>Section 5 Post-Activity</h3>
+              <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[4].name></doctest-activity>
+            <br>
 
             <p><a href="#" class="btn btn-primary py-3 px-3">Try Project!</a></p>
           </div>
@@ -437,7 +457,8 @@
             })
          }
         },
-        template: '<div class="md-layout  md-gutter"><div id="cardGroupCreator" class="md-layout-item md-size-80">\
+        template: '<div class="md-layout  md-gutter">\
+        <div id="cardGroupCreator" class="md-layout-item md-size-100">\
             <md-card v-for="layoutItem in layoutItems" :key=layoutItem.header>\
                 <md-card-header>\
                     <md-card-header-text>\
@@ -453,7 +474,7 @@
             </md-card>\
                     <button v-on:click="postContents">Submit</button>\
             </div>\
-            <div id="cardGroupPreview" class="md-layout-item md-size-80">\
+            <div id="cardGroupPreview" class="md-layout-item md-size-100">\
                 <md-card>\
                     <md-card-header>\
                     <md-card-header-text>\
@@ -610,7 +631,8 @@
             }
           }
         },
-        template:`<div style = "padding: 3%">
+        template:`
+        <div style = "padding: 3%">\
                     <div class = "md-subheading TableTitle" style = "border-style: groove">\
                       <div style="backgroundColor: grey; height:50px; text-align:center; vertical-align:middle; line-height: 40px; font-size:18px; color: white">{{ this.mcq[this.intQuestion].question}}</div>\
                       <button  style = "font-size:15px; backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('A')">{{ this.mcq[this.intQuestion].choiceA}}</button>\
@@ -639,19 +661,19 @@
             ],
             questions:[
               {name:"question 1", layoutItems: [
-              {header:"Check Loaded Data", subHeader:'Your code goes below', vModel:""}
+              {header:"Print the Dimensions of Loaded Data", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {name:"question 2", layoutItems: [
-              {header:"Check First Five Rows of Data", subHeader:'Your code goes below', vModel:""}
+              {header:"Show the First Five Rows of Data", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {name:"question 3", layoutItems: [
               {header:"Find the Mean of Each Column", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {name:"question 4", layoutItems: [
-              {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def logicAndOperation(a,b):\\n return b"}
+              {header:"Subset out Data which 'Amount' is greater than 100", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {name:"question 5", layoutItems: [
-              {header:"Editable Code Block", subHeader:'Your code goes below', vModel:"def doubleEqualOperation(a,b):\\n return b"}
+              {header:"Sorting Data in descending order according to column 'newbalanceOrig'", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"}
             ]
           }

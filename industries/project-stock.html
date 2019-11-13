@@ -115,7 +115,7 @@
     <div class="container" id="vueOnly">
       <div class="row justify-content-center">
         <form class="form-inline">
-          <button class="btn btn-outline-success" type="button" onclick="openTab('LoadInData')">Load in Data</button>
+          <button class="btn btn-outline-success" type="button" onclick="openTab('LoadInData')" v-bind:md-label=question.name+question.status>Load in Data</button>
           <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('DataEx')">Data Exploration</button>
           <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('DataC')">Data Cleaning</button>
           <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('SubData')">Subsetting Data</button>
@@ -207,10 +207,10 @@
             <mcq-test v-bind:int-Question=1></mcq-test>
           
             <h3>Section 1 Post-Activity 1</h3>
-                <doctest-activity v-bind:layout-things=questions[0].layoutItems v-bind:question-name=questions[0].name></doctest-activity>
+                <doctest-activity v-bind:layout-things=questions[0].layoutItems v-bind:question-name=questions[0].hidden></doctest-activity>
             <br>
             <h3>Section 1 Post-Activity 2</h3>
-                <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].name></doctest-activity>
+                <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].hidden></doctest-activity>
             <br>
           </div>
       
@@ -253,7 +253,7 @@
             </div>
             <mcq-test v-bind:int-Question=2></mcq-test>
             <h3>Section 2 Post-Activity</h3>
-                <doctest-activity v-bind:layout-things=questions[2].layoutItems v-bind:question-name=questions[2].name></doctest-activity>
+                <doctest-activity v-bind:layout-things=questions[2].layoutItems v-bind:question-name=questions[2].hidden></doctest-activity>
             <br>
 
           </div>
@@ -307,7 +307,7 @@
 
 
             <h3>Section 4 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].name></doctest-activity>
+              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].hidden></doctest-activity>
             <br>
           </div>
 
@@ -338,7 +338,7 @@
 
             </div>
             <h3>Section 5 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[4].name></doctest-activity>
+              <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[4].hidden></doctest-activity>
             <br>
 
             <p><a href="#" class="btn btn-primary py-3 px-3">Try Project!</a></p>
@@ -448,7 +448,7 @@
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify({name: {0:this.questionName}, editable:{0:this.layoutItems[0].vModel}})          //<!-- Edited Here -->
+        body: JSON.stringify({hidden: {0:this.questionName}, editable:{0:this.layoutItems[0].vModel}})          //<!-- Edited Here -->
         }).then(response => {
             return response.json()
         }).then(data => {
@@ -501,7 +501,7 @@
             return {
               //integer: this.intQuestion,
               mcq:[
-              {name: "mcq1", question: "How do you open a text file named 'StockData' that has tabs between them?",
+              {hidden: "mcq1", question: "How do you open a text file named 'StockData' that has tabs between them?",
               choiceA: "df = pd.read_excel('StockData.txt')",
               choiceB: "df = pd.read_csv('StockData.txt', delimiter = '\t')",
               choiceC: "df = pd.read_csv('StockData.txt', delimiter = ',')",
@@ -514,7 +514,7 @@
               resC: "delimiter = ',' is for comma separated data files only. Try Again!",
               response: ""
               },
-              {name: "mcq2", question: "What is the command to see the first 5 rows of the dataframe?",
+              {hidden: "mcq2", question: "What is the command to see the first 5 rows of the dataframe?",
               choiceA: "df.head()",
               choiceB: "df.tail()",
               choiceC: "df.first()",
@@ -527,7 +527,7 @@
               resC: "first() doesn't sound familiar. Try Again!",
               response: ""
               },
-              {name: "mcq3", question: "Will variables of string data type appear in the Table of means?",
+              {hidden: "mcq3", question: "Will variables of string data type appear in the Table of means?",
               choiceA: "I don't know",
               choiceB: "Yes, variables of string data type will have a mean value",
               choiceC: "No, the means of variables with string data type will not be computed",
@@ -540,7 +540,7 @@
               resC: "Awesome",
               response: ""
               },
-              {name: "mcq4", question: "Which of the following will return a matrix of total null values for each column?",
+              {hidden: "mcq4", question: "Which of the following will return a matrix of total null values for each column?",
               choiceA: "df",
               choiceB: "df.isnull().sum()",
               choiceC: "df.isnull()",
@@ -553,7 +553,7 @@
               resC: "df.isnull() returns a dataframe populated with Boolean values that indicates if the cell is null or not",
               response: ""
               },
-              {name: "mcq5", question: "What is the correct code to subset data where 'profit' is at least $150 OR 'loss' == 0?",
+              {hidden: "mcq5", question: "What is the correct code to subset data where 'profit' is at least $150 OR 'loss' == 0?",
               choiceA: "df[ (df['profit'] >= 150) | (df['loss'] == 0)]",
               choiceB: "df[ (df['profit'] >= 150) & (df['loss'] == 0)]",
               choiceC: "This is too hard!",
@@ -566,7 +566,7 @@
               resC: "Don't Give Up! :)",
               response: ""
               },
-              {name: "mcq6", question: "What is the default sorting for function sort_values?",
+              {hidden: "mcq6", question: "What is the default sorting for function sort_values?",
               choiceA: "Ascending",
               choiceB: "Values will not be sorted",
               choiceC: "Descending",
@@ -660,19 +660,19 @@
               {name:"Sorting Data", status:" 🔴"}
             ],
             questions:[
-              {name:"question 1", layoutItems: [
+              {hidden:"question 1", layoutItems: [
               {header:"Print the Dimensions of Loaded Data", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
-              {name:"question 2", layoutItems: [
+              {hidden:"question 2", layoutItems: [
               {header:"Show the First Five Rows of Data", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
-              {name:"question 3", layoutItems: [
+              {hidden:"question 3", layoutItems: [
               {header:"Find the Mean of Each Column", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
-              {name:"question 4", layoutItems: [
+              {hidden:"question 4", layoutItems: [
               {header:"Subset out Data which 'Amount' is greater than 100", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
-              {name:"question 5", layoutItems: [
+              {hidden:"question 5", layoutItems: [
               {header:"Sorting Data in descending order according to column 'newbalanceOrig'", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"}
             ]

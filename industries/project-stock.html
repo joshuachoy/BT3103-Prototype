@@ -285,9 +285,9 @@
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfReplaceNA.html" width="100%"></iframe>
             <mcq-test v-bind:int-Question=3></mcq-test>
             
-            <!-- <h3>Section 3 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].name></doctest-activity>
-            <br> -->
+            <h3>Section 3 Post-Activity</h3>
+              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].hidden></doctest-activity>
+            <br>
 
           </div>
 
@@ -307,7 +307,7 @@
 
 
             <h3>Section 4 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].hidden></doctest-activity>
+              <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[3].hidden></doctest-activity>
             <br>
           </div>
 
@@ -338,7 +338,7 @@
 
             </div>
             <h3>Section 5 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[4].hidden></doctest-activity>
+              <doctest-activity v-bind:layout-things=questions[5].layoutItems v-bind:question-name=questions[4].hidden></doctest-activity>
             <br>
 
             <p><a href="#" class="btn btn-primary py-3 px-3">Try Project!</a></p>
@@ -669,9 +669,12 @@
               {header:"Find the Mean of Each Column", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 4", layoutItems: [
-              {header:"Subset out Data which 'Amount' is greater than 100", subHeader:'Your code goes below', vModel:""}
+              {header:"Find the number of null values in each column", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 5", layoutItems: [
+              {header:"Subset out Data which 'Amount' is greater than 100", subHeader:'Your code goes below', vModel:""}
+              ], status:" 🔴"},
+              {hidden:"question 6", layoutItems: [
               {header:"Sorting Data in descending order according to column 'newbalanceOrig'", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"}
             ]

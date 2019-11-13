@@ -1,6 +1,6 @@
 <head>
 <script  src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ext-whitespace.js"></script>
 <!-- The Language!! (python) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/mode-python.js"></script>
@@ -11,19 +11,30 @@
 <style>#editor{width: 100%;height: 100%;}</style>
     
 </head>
-<body>
-<div id="editor"># Loading in CSV data
+<div class="wrapper">
+              <div class="toolbar">
+              	<button id="clipboard" onclick="myFunction()" class="btn btn-primary btn-xs">Copy</button>
+              </div>
+                <div class="inner" id="editor"># Loading in CSV data
 import pandas as pd
-df = pd.read_csv("fraud_data.csv") # argument specifies name of file
-</div>
+df = pd.read_csv("fraud_data.csv") # argument specifies name of file</div>
+            </div>
+</div><!--/wrapper-->
 </body>
 <script>
-window.onload = function(e){
     console.log("Initialize Codepad!");
     var editor = ace.edit("editor");
     <!-- prevents user from editing -->
     editor.setReadOnly(true);
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/python");
-}
+function myFunction() {
+  /* Get the text field */
+  editor.selectAll()
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  /*This might help https://stackoverflow.com/questions/38847800/copy-text-from-%CE%91ce-editor-to-clipboard */
+} 
 </script>

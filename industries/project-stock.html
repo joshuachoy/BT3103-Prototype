@@ -114,19 +114,19 @@
     
     <div class="container" id="vueOnly">
       <div class="row justify-content-center">
+        <form class="form-inline">
+          <button class="btn btn-outline-success" type="button" onclick="openTab('LoadInData')">Load in Data</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('DataEx')">Data Exploration</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('DataC')">Data Cleaning</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('SubData')">Subsetting Data</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('SortData')">Sorting Data</button>
+        </form>
         <!-- <md-tabs>
             <md-tab v-for="section in sections" :key=section.name v-bind:md-label=section.name+section.status onclick="openTab(section.name)">
                 <doctest-activity v-bind:layout-things=question.layoutItems v-bind:question-name=question.name  @questionhandler="toggleQuestionStatus"/>
             </md-tab>
         </md-tabs> -->
         <div class="col-md-8 md-5" style = "font-size:15px">
-          <div class="tab">
-            <button class="tablinks" onclick="openTab('LoadInData')">Load in Data</button>
-            <button class="tablinks" onclick="openTab('DataEx')">Data Exploration</button>
-            <button class="tablinks" onclick="openTab('DataC')">Data Cleaning</button>
-            <button class="tablinks" onclick="openTab('SubData')">Subsetting Data</button>
-            <button class="tablinks" onclick="openTab('SortData')">Sorting Data</button>
-          </div>
           <div id="LoadInData" class="tabcontent">
             <h1>Overview</h1>           
 

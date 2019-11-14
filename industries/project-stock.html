@@ -98,30 +98,34 @@
     <div class="container" id="vueOnly">
       <div id="scroller-anchor" class="row justify-content-center">
         <div id="scroller" style="z-index: 100">
-          <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons" v-bind:id="vueOnly">
-            <label class="btn btn-primary active" onclick="openTab('Overview')">
+          <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
+            <label class="btn btn-primary active" onclick="openTab('Overview')" @sectionhandler="toggleSectionStatus"/>
               <input type="radio" autocomplete="off" checked> Overview
               <span>{{ sections[0].status }}</span>
             </label>
-            <label class="btn btn-primary" onclick="openTab('LoadInData')">
+            <label class="btn btn-primary" onclick="openTab('LoadInData')" @sectionhandler="toggleSectionStatus"/>
                 <input type="radio" autocomplete="off" checked> Load in Data 
-                <span>{{ sections[1].status }}</span>
+                <span>{{ questions[1].status }}</span>
               </label>
-            <label class="btn btn-primary" onclick="openTab('DataEx')">
+            <label class="btn btn-primary" onclick="openTab('DataEx')" @sectionhandler="toggleSectionStatus"/>
               <input type="radio" autocomplete="off"> Data Exploration
-              <span>{{ sections[2].status }}</span>
+              <span>{{ questions[2].status }}</span>
             </label>
-            <label class="btn btn-primary" onclick="openTab('DataC')">
+            <label class="btn btn-primary" onclick="openTab('DataC')" @sectionhandler="toggleSectionStatus"/>
               <input type="radio" autocomplete="off"> Data Cleaning
-              <span>{{ sections[3].status }}</span>
+              <span>{{ questions[3].status }}</span>
             </label>
-            <label class="btn btn-primary" onclick="openTab('SubData')">
+            <label class="btn btn-primary" onclick="openTab('SubData')" @sectionhandler="toggleSectionStatus"/>
               <input type="radio" autocomplete="off"> Subsetting Data
-              <span>{{ sections[4].status }}</span>
+              <span>{{ questions[4].status }}</span>
             </label>
-            <label class="btn btn-primary" onclick="openTab('SortData')">
+            <label class="btn btn-primary" onclick="openTab('SortData')" @sectionhandler="toggleSectionStatus"/>
               <input type="radio" autocomplete="off"> Sorting Data
-              <span>{{ sections[5].status }}</span>
+              <span>{{ questions[5].status }}</span>
+            </label>
+            <label class="btn btn-primary" onclick="openTab('FinalProj')">
+              <input type="radio" autocomplete="off"> Project
+              <span> 💪 </span>
             </label>
           </div>
         </div>
@@ -129,20 +133,20 @@
         <div class="col-md-8 md-5" style = "font-size:15px">
           <div id="Overview" class="tabcontent">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <h2 class="font-weight-bold"><u>Overview</u></h2>           
+            <h1>Overview</h1>           
 
-            <p class="font-weight-normal">Welcome to PanDuh's Fraud Detection Panda project! This project will utilize pandas to explore a dataset that contains fradulent transactions.</p>
-            <p class="font-weight-normal"> Fraud Detection is a commonly employed activity in the financial industry to identify customers who have obtained money illegally. </p>
-            <h2 class="font-weight-bold"><u>Aim</u></h2>
-            <p class="font-weight-normal"> To analyse characteristics of fraudulent transactions. </p>
+            <p>Welcome to PanDuh's Fraud Detection Panda project! This project will utilize pandas to explore a dataset that contains fradulent transactions.</p>
+            <p> Fraud Detection is a commonly employed activity in the financial industry to identify customers who have obtained money illegally. </p>
+            <h1>Aim</h1>
+            <p> To analyse characteristics of fraudulent transactions.</p>
 
-            <h2 class="font-weight-bold"><u>Dataset</u></h2>
-            <p class="font-weight-normal"> Loaded in the table below is the dataset. Take some time to explore the data. </p>
+            <h1>Dataset</h1>
+            <p> Loaded in the table below is the dataset. Take some time to explore the data. </p>
 
             <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTxLAhPejZjOPpuM7jgq6vhy6Y5FVqAV_oK0JKlrc1PsR9IPEAp1eccHHS74YJvWAdsyam2JP-w3btJ/pubhtml?gid=1157778684&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
-            <p class="font-weight-normal"> The Fraud Dataset provided contains 500 rows and 7 columns. </p>
-            <ol class="font-weight-normal"> The columns are: 
+            <p> The Fraud Dataset provided contains 500 rows and 7 columns. </p>
+            <ol> The columns are: 
               <li>index: specifies the row ID in dataset</li>
               <li>type: specifies the kind of transaction made (e.g. PAYMENT, DEBIT, TRANSFER) </li>
               <li>amount: specifies the amount of money involved in the transaction </li>
@@ -154,7 +158,7 @@
             </ol>
             
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <h3 class="font-weight-bold">Let's start by installing Pandas package in your desktop!</h3>
+            <h2>Let's start by installing Pandas package in your desktop!</h2>
 
             <iframe style ="width:800px; height:500px;" src="https://www.youtube.com/embed/8Sipkd9vNKk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -162,13 +166,13 @@
 
           <div id="LoadInData" class="tabcontent" style="display:none">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <h2 class="font-weight-bold"> 1. Load in File</h2>
-            <h4 class="font-weight-bold"> 1.1. Loading in Data </h4>
-            <p class="font-weight-normal">Loading data from different types of file (.txt or .csv or .xlsx)</p>
+            <h1> 1. Load in File</h1>
+            <h2> 1.1. Loading in Data </h1>
+            <p>Loading data from different types of file (.txt or .csv or .xlsx)</p>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <p class="font-weight-normal"> Step 1: Save file in same folder as current Python script. </p>
-            <p class="font-weight-normal"> Step 2: Open file </p>
-            <ul class="font-weight-normal"> 
+            <p> Step 1: Save file in same folder as current Python script. </p>
+            <p> Step 2: Open file </p>
+            <ul> 
               <li> For CSV file </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/loadcsv.html" width="100%"></iframe>
               <li> For Text file </li>
@@ -179,10 +183,10 @@
 
             <mcq-test v-bind:int-Question=0></mcq-test>
 
-            <h4 class="font-weight-bold"> 1.2. Checking Loaded Data </h4>
-            <p class="font-weight-normal"> Always make it a practice to check that our data has been loaded correctly (meaning all columns and rows are loaded). </p>
-            <p class="font-weight-normal"> Step 1: Check the number of rows and columns. </p>
-            <ul class="font-weight-normal">
+            <h2> 1.2. Checking Loaded Data </h2>
+            <p> Always make it a practice to check that our data has been loaded correctly (meaning all columns and rows are loaded). </p>
+            <p> Step 1: Check the number of rows and columns. </p>
+            <ul>
               <li> Showing the number of rows then number of columns. </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfShape.html" width="100%"></iframe>
               <li> Print out results to interpret numbers easily. </li>
@@ -196,15 +200,15 @@
             <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
             </head>
 
-            <p class="font-weight-normal"> Step 2: Check the first few rows. </p>
-            <ul class="font-weight-normal">
+            <p> Step 2: Check the first few rows. </p>
+            <ul>
               <li> Display first 5 rows of data. </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showFirst5.html" width="100%"></iframe>
               <li> Display first 10 rows of data. </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showFirst10.html" width="100%"></iframe>
             </ul>
-            <p class="font-weight-normal"> Step 3: Check the last few rows. </p>
-            <ul class="font-weight-normal">
+            <p> Step 3: Check the last few rows. </p>
+            <ul>
               <li> Display last 5 rows of data. </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showLast5.html" width="100%"></iframe>
               <li> Display last 20 rows of data. </li>
@@ -212,11 +216,8 @@
             </ul>
             <mcq-test v-bind:int-Question=1></mcq-test>
           
-            <h3 class="font-weight-bold">Post-Activity 1</h3>
-                <doctest-activity v-bind:layout-things=questions[0].layoutItems v-bind:question-name=questions[0].hidden></doctest-activity>
-            <br>
-            <h3 class="font-weight-bold">Post-Activity 2</h3>
-                <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].hidden></doctest-activity>
+            <h3>Post-Learning-Activity!</h3>
+                <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].hidden @sectionhandler="toggleSectionStatus"/>
             <br>
           </div>
       
@@ -252,15 +253,15 @@
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfCorr.html" width="100%"></iframe>
             </ul>
             <div class="row justify-content-center">
-              <!-- <div class="col-md-8 mb-5"> -->
+
               <div>
                 <h3> df.corr() </h3>
                 <iframe style = "width:1200px; height:250px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=0&single=true"></iframe>
               </div>
             </div>
             <mcq-test v-bind:int-Question=2></mcq-test>
-            <h3>Section 2 Post-Activity</h3>
-                <doctest-activity v-bind:layout-things=questions[2].layoutItems v-bind:question-name=questions[2].hidden></doctest-activity>
+            <h3>Post-Learning-Activity!</h3>
+                <doctest-activity v-bind:layout-things=questions[2].layoutItems v-bind:question-name=questions[2].hidden  @sectionhandler="toggleSectionStatus"/>
             <br>
 
           </div>
@@ -293,8 +294,8 @@
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfReplaceNA.html" width="100%"></iframe>
             <mcq-test v-bind:int-Question=3></mcq-test>
             
-            <h3>Section 3 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].hidden></doctest-activity>
+            <h3>Post-Learning-Activity!</h3>
+              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].hidden  @sectionhandler="toggleSectionStatus"/>
             <br>
 
           </div>
@@ -315,8 +316,8 @@
             <mcq-test v-bind:int-Question=4></mcq-test>
 
 
-            <h3>Section 4 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[3].hidden></doctest-activity>
+            <h3>Post-Learning-Activity!</h3>
+              <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[4].hidden  @sectionhandler="toggleSectionStatus"/>
             <br>
           </div>
 
@@ -327,7 +328,6 @@
             <p> Sorting can help to easily identify the largest or smallest rows of data. </p>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfSortingAscending.html" width="100%"></iframe>
             <div class="row justify-content-center">
-              <!-- <div class="col-md-8 mb-5"> -->
 
               <div>
                 <h3> Sorting - Ascending Order </h3>
@@ -340,20 +340,49 @@
             <div class="row justify-content-center">
               
               <div>
-              <!-- <div class="col-md-8 mb-5"> -->
+              
                 <h3> Sorting - Descending Order </h3>
                 <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=1748770864&single=true"></iframe>
                 <mcq-test v-bind:int-Question=5></mcq-test>
               </div>
 
             </div>
-            <h3>Section 5 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[5].layoutItems v-bind:question-name=questions[4].hidden></doctest-activity>
+            <h3>Post-Learning-Activity!</h3>
+              <doctest-activity v-bind:layout-things=questions[5].layoutItems v-bind:question-name=questions[5].hidden  @sectionhandler="toggleSectionStatus"/>
             <br>
 
-            <p><a href="#" class="btn btn-primary py-3 px-3">Try Project!</a></p>
           </div>
           
+          <div id="FinalProj" class="tabcontent" style="display:none">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <h1>Final Project</h1>           
+          
+            <!-- <p>Click on the Panduh logo to download the dataset:<p></p>
+            <a href="https://drive.google.com/uc?id=1QfiR3jy_TZT4D0_tYi2ZIML3EUz4Ns2E&export=download" download="finalDS">
+              <img src="https://mylambdajosh.s3.amazonaws.com/images/invert.png" width = "280" height = "180">
+            </a> -->
+
+            <h3>Question 1:</h3>
+                <doctest-activity v-bind:layout-things=questions[6].layoutItems v-bind:question-name=questions[6].hidden></doctest-activity>
+            <br>
+
+            <h3>Question 2:</h3>
+                <doctest-activity v-bind:layout-things=questions[7].layoutItems v-bind:question-name=questions[7].hidden></doctest-activity>
+            <br>
+            
+            <h3>Question 3:</h3>
+              <doctest-activity v-bind:layout-things=questions[8].layoutItems v-bind:question-name=questions[8].hidden></doctest-activity>
+            <br>
+
+            <h3>Question 4:</h3>
+              <doctest-activity v-bind:layout-things=questions[9].layoutItems v-bind:question-name=questions[9].hidden></doctest-activity>
+            <br>
+          
+            <h3>Question 5:</h3>
+              <doctest-activity v-bind:layout-things=questions[10].layoutItems v-bind:question-name=questions[10].hidden></doctest-activity>
+            <br>
+          </div>
+
         </div>
       </div>
     </div>
@@ -487,7 +516,7 @@
             return response.json()
           }).then(data => {
             this.answer = JSON.parse(JSON.stringify(data))
-            return this.$emit('questionhandler',{data, questionName:this.questionName})
+            return this.$emit('sectionhandler',{data, questionName:this.questionName})
           })
         }
       },
@@ -707,26 +736,41 @@
               {header:"Find the number of null values in each column", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 5", layoutItems: [
-              {header:"Subset out Data which 'Amount' is greater than 100", subHeader:'Your code goes below', vModel:""}
+              {header:"Subset out Data which 'amount' is greater than 100", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 6", layoutItems: [
               {header:"Sorting Data in descending order according to column 'newbalanceOrig'", subHeader:'Your code goes below', vModel:""}
+              ], status:" 🔴"},
+              {hidden:"projectQn 1", layoutItems: [
+              {header:"Print the Dimensions of Loaded Data", subHeader:'Your code goes below', vModel:""}
+              ], status:" 🔴"},
+              {hidden:"projectQn 2", layoutItems: [
+              {header:"Show the Last 10 Rows of Data", subHeader:'Your code goes below', vModel:""}
+              ], status:" 🔴"},
+              {hidden:"projectQn 3", layoutItems: [
+              {header:"Find the Median of Each Column", subHeader:'Your code goes below', vModel:""}
+              ], status:" 🔴"},
+              {hidden:"projectQn 4", layoutItems: [
+              {header:"Subset out Data which 'isFraud' is equal to 1", subHeader:'Your code goes below', vModel:""}
+              ], status:" 🔴"},
+              {hidden:"projectQn 5", layoutItems: [
+              {header:"Sorting Data in descending order according to column 'amount'", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"}
             ]
           }
         },
          methods: {
           toggleSectionStatus (response) {
-              const {data, sectionName} = response
+              const {data, questionName} = response
               if (data.htmlFeedback) {
                   const searchText = data.htmlFeedback
                   searchText.search(/b2d8b2/) !== -1 ?
                       searchText.search(/#ff9999/) == -1 ?
-                      this.questions.find(item => item.name === sectionName).status = " ✔️"
+                      this.questions.find(item => item.hidden === questionName).status = " 💯"
                       :
-                      this.questions.find(item => item.name === sectionName).status = " 🤨"
+                      this.questions.find(item => item.hidden === questionName).status = " 🤨"
                   :
-                  this.questions.find(item => item.name === sectionName).status = " 🔴"
+                  this.questions.find(item => item.hidden === questionName).status = " 🔴"
               }
           }
         }

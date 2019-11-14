@@ -272,11 +272,11 @@ def lambda_handler(event, context):
         
     if method == 'POST':
         bodyContent = event.get('body',{}) 
-        parsedBodyContent = json.loads(bodyContent)
+        parsedBodyContent = json.loads(bodyContent) 
         print(bodyContent)
         #testCases = parsedBodyContent["shown"]["0"]                             #! Edited Here
 
-        question = parsedBodyContent["hidden"]["0"]                                #! Edited Here
+        question = parsedBodyContent["hidden"]["0"]                                 #! Edited Here
         
         # allTestCases = {"question 1": ">>> df.shape\n(500,8)",                                              #! Edited Here
         #                 "question 2": ">>> df.head()\n" + dataFrames_test_ans[question]

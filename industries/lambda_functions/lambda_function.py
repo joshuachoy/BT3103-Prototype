@@ -61,6 +61,35 @@ def lambda_handler(event, context):
         'newbalanceOrig': newbalanceOrig_lst, 'oldbalanceDest': oldbalanceDest_lst, 'newbalanceDest': newbalanceDest_lst, 'isFraud': isFraud_lst}
     df = pd.DataFrame(data=d)
     
+    # fp_recList = []
+    # fp_obj = s3.get_object(Bucket = "mylambdacollection2aeron", Key = "finalProject_fraudData.csv")
+    
+    # fp_recList = obj["Body"].read().decode("utf-8").split("\n")
+    # fp_firstrecord = True
+    # fp_csv_reader = csv.reader(fp_recList, delimiter = ",", quotechar = '"')
+    # fp_counter = 0
+    
+    # fp_index_lst = []
+    # fp_card_lst = []
+    # fp_amount_lst = []
+    # fp_CBK_lst = []
+    # for row in fp_csv_reader:
+    #     if fp_counter == 251:
+    #         break
+    #     fp_counter += 1
+    #     if (fp_firstrecord):
+    #         fp_firstrecord = False
+    #         continue
+    #     if len(row) != 0:
+    #         fp_index_lst.append(row[0])
+    #         fp_card_lst.append(row[1])
+    #         fp_amount_lst.append(float(row[2]))
+    #         fp_CBK_lst.append(row[3])
+    
+    # fp_d = {'index': fp_index_lst, 'card number': fp_card_lst, 
+    #         'Amount': fp_amount_lst, 'CBK': fp_CBK_lst}
+    # fp_df = pd.DataFrame(data=fp_d)
+    
     ####################################################### Codes to Run Website Comes Below ###################################################################
 
 
@@ -259,7 +288,12 @@ def lambda_handler(event, context):
                         "question 3": ">>> df.mean()\n" + pd.DataFrame(df.mean(), columns = ["Mean"]).to_string().replace("\n", "--"),
                         "question 4": ">>> df.isnull().sum()\n" +  df.isnull().sum().to_string().replace("\n", "--"),
                         "question 5": ">>> df[df['amount'] > 100]\n" + df[df['amount'] > 100].to_string().replace("\n", "--"),
-                        "question 6": ">>> df.sort_values('newbalanceDest', ascending = False)\n" + df.sort_values('newbalanceDest', ascending = False).to_string().replace("\n", "--")
+                        "question 6": ">>> df.sort_values('newbalanceDest', ascending = False)\n" + df.sort_values('newbalanceDest', ascending = False).to_string().replace("\n", "--"),
+                        "projectQn 1": ">>> df.shape\n(500,8)",
+                        "projectQn 2": ">>> df.tail(10)\n" + df.tail(10).to_string().replace("\n", "--"),
+                        "projectQn 3": ">>> df.median()\n" + df.median().to_string().replace("\n", "--"),
+                        "projectQn 4": ">>> df[df['isFraud'] == 1]\n" + df[df['isFraud'] == 1].to_string().replace("\n", "--"),
+                        "projectQn 5": ">>> df.sort_values('amount', ascending = False)\n" + df.sort_values('amount', ascending = False).to_string().replace("\n", "--")
                         }
 
         
@@ -269,7 +303,13 @@ def lambda_handler(event, context):
                         "question 3": "series",
                         "question 4": "dataframe",
                         "question 5": "dataframe",
-                        "question 6": "dataframe"}
+                        "question 6": "dataframe",
+                        "projectQn 1": "non-dataframe",
+                        "projectQn 2": "dataframe",
+                        "projectQn 3": "series",
+                        "projectQn 4": "dataframe",
+                        "projectQn 5": "dataframe"
+                        }
                         
         testCases = allTestCases[question] 
         #testCases = ">>> df.shape\n(500,8)"                                     #! Edited Here

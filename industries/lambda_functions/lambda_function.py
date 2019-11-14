@@ -50,12 +50,12 @@ def lambda_handler(event, context):
         if len(row) != 0:
             index_lst.append(row[0])
             type_lst.append(row[1])
-            amount_lst.append(row[2])
-            oldbalanceOrig_lst.append(row[3])
-            newbalanceOrig_lst.append(row[4])
-            oldbalanceDest_lst.append(row[5])
-            newbalanceDest_lst.append(row[6])
-            isFraud_lst.append(row[7])
+            amount_lst.append(float(row[2]))
+            oldbalanceOrig_lst.append(float(row[3]))
+            newbalanceOrig_lst.append(float(row[4]))
+            oldbalanceDest_lst.append(float(row[5]))
+            newbalanceDest_lst.append(float(row[6]))
+            isFraud_lst.append(int(row[7]))
     
     d = {'index': index_lst, 'type': type_lst, 'amount': amount_lst, 'oldbalanceOrig': oldbalanceOrig_lst,
         'newbalanceOrig': newbalanceOrig_lst, 'oldbalanceDest': oldbalanceDest_lst, 'newbalanceDest': newbalanceDest_lst, 'isFraud': isFraud_lst}
@@ -247,7 +247,7 @@ def lambda_handler(event, context):
         print(bodyContent)
         #testCases = parsedBodyContent["shown"]["0"]                             #! Edited Here
 
-        question = parsedBodyContent["name"]["0"]                                #! Edited Here
+        question = parsedBodyContent["hidden"]["0"]                                #! Edited Here
         
         # allTestCases = {"question 1": ">>> df.shape\n(500,8)",                                              #! Edited Here
         #                 "question 2": ">>> df.head()\n" + dataFrames_test_ans[question]
@@ -257,7 +257,7 @@ def lambda_handler(event, context):
         allTestCases = {"question 1": ">>> df.shape\n(500,8)",                                              #! Edited Here NOTE THAT FOR TUPLES, CANNOT LEAVE SPACE AFTER COMMA!
                         "question 2": ">>> df.head()\n" + df.head().to_string().replace("\n", "--"),
                         "question 3": ">>> df.mean()\n" + pd.DataFrame(df.mean(), columns = ["Mean"]).to_string().replace("\n", "--"),
-                        # "question 4": ">>> df.isnull()\n" +  df.isnull().to_string().replace("\n", "--"),
+                        "question 4": ">>> df.isnull().sum()\n" +  df.isnull().sum().to_string().replace("\n", "--"),
                         "question 5": ">>> df[df['amount'] > 100]\n" + df[df['amount'] > 100].to_string().replace("\n", "--"),
                         "question 6": ">>> df.sort_values('newbalanceDest', ascending = False)\n" + df.sort_values('newbalanceDest', ascending = False).to_string().replace("\n", "--")
                         }
@@ -267,7 +267,7 @@ def lambda_handler(event, context):
         questionType = {"question 1": "non-dataframe",
                         "question 2": "dataframe",
                         "question 3": "series",
-                        # "question 4": "dataframe",
+                        "question 4": "dataframe",
                         "question 5": "dataframe",
                         "question 6": "dataframe"}
                         

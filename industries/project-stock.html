@@ -29,40 +29,9 @@
     <!-- VueJS Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex"></script>
-    <style>
-      body {
-        font-family: Arial;
-      }
-      
-      /* Style the tab */
-      .tab {
-        overflow: hidden;
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
-      }
-      
-      /* Style the buttons inside the tab */
-      .tab button {
-        background-color: inherit;
-        float: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        padding: 14px 16px;
-        transition: 0.3s;
-        font-size: 17px;
-      }
-      
-      /* Change background color of buttons on hover */
-      .tab button:hover {
-        background-color: #ddd;
-      }
-      
-      /* Create an active/current tablink class */
-      .tab button.active {
-        background-color: #ccc;
-      }
-    </style>
+
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
     
@@ -112,57 +81,94 @@
       </div>
     </div>
     
+    <style>
+      .btn-primary{
+          background-color: rgb(127, 128, 128);
+          border-color: rgb(127, 128, 128);
+      }
+      .btn-primary:hover,
+      .btn-primary:active,
+      .btn-primary:visited,
+      .btn-primary:focus {
+          background-color: rgb(226, 143, 19) !important;
+          border-color: rgb(226, 143, 19) !important;
+      }
+    </style>
+
     <div class="container" id="vueOnly">
-      <div class="row justify-content-center">
-        <form class="form-inline">
-          <button class="btn btn-outline-success" type="button" onclick="openTab('LoadInData')">Load in Data</button>
-          <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('DataEx')">Data Exploration</button>
-          <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('DataC')">Data Cleaning</button>
-          <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('SubData')">Subsetting Data</button>
-          <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openTab('SortData')">Sorting Data</button>
-        </form>
-        <!-- <md-tabs>
-            <md-tab v-for="section in sections" :key=section.name v-bind:md-label=section.name+section.status onclick="openTab(section.name)">
-                <doctest-activity v-bind:layout-things=question.layoutItems v-bind:question-name=question.name  @questionhandler="toggleQuestionStatus"/>
-            </md-tab>
-        </md-tabs> -->
+      <div id="scroller-anchor" class="row justify-content-center">
+        <div id="scroller" style="z-index: 100">
+          <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons" v-bind:id="vueOnly">
+            <label class="btn btn-primary active" onclick="openTab('Overview')">
+              <input type="radio" autocomplete="off" checked> Overview
+              <span>{{ sections[0].status }}</span>
+            </label>
+            <label class="btn btn-primary" onclick="openTab('LoadInData')">
+                <input type="radio" autocomplete="off" checked> Load in Data 
+                <span>{{ sections[1].status }}</span>
+              </label>
+            <label class="btn btn-primary" onclick="openTab('DataEx')">
+              <input type="radio" autocomplete="off"> Data Exploration
+              <span>{{ sections[2].status }}</span>
+            </label>
+            <label class="btn btn-primary" onclick="openTab('DataC')">
+              <input type="radio" autocomplete="off"> Data Cleaning
+              <span>{{ sections[3].status }}</span>
+            </label>
+            <label class="btn btn-primary" onclick="openTab('SubData')">
+              <input type="radio" autocomplete="off"> Subsetting Data
+              <span>{{ sections[4].status }}</span>
+            </label>
+            <label class="btn btn-primary" onclick="openTab('SortData')">
+              <input type="radio" autocomplete="off"> Sorting Data
+              <span>{{ sections[5].status }}</span>
+            </label>
+          </div>
+        </div>
+        
         <div class="col-md-8 md-5" style = "font-size:15px">
-          <div id="LoadInData" class="tabcontent">
-            <h1>Overview</h1>           
+          <div id="Overview" class="tabcontent">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <h2 class="font-weight-bold"><u>Overview</u></h2>           
 
-            <p> Welcome to PanDuh's Fraud Detection Panda project! This project will utilize pandas to explore a dataset that contains fradulent transactions.</p>
-            <p> Fraud Detection is a commonly employed activity in the financial industry to identify customers who have obtained money illegally. </p>
-            <h1> Aim </h1>
-            <p> To analyse characteristics of fraudulent transactions. </p>
+            <p class="font-weight-normal">Welcome to PanDuh's Fraud Detection Panda project! This project will utilize pandas to explore a dataset that contains fradulent transactions.</p>
+            <p class="font-weight-normal"> Fraud Detection is a commonly employed activity in the financial industry to identify customers who have obtained money illegally. </p>
+            <h2 class="font-weight-bold"><u>Aim</u></h2>
+            <p class="font-weight-normal"> To analyse characteristics of fraudulent transactions. </p>
 
-            <h1> Dataset </h1>
-            <p> Loaded in the table below is the dataset. Take some time to explore the data. </p>
+            <h2 class="font-weight-bold"><u>Dataset</u></h2>
+            <p class="font-weight-normal"> Loaded in the table below is the dataset. Take some time to explore the data. </p>
 
             <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTxLAhPejZjOPpuM7jgq6vhy6Y5FVqAV_oK0JKlrc1PsR9IPEAp1eccHHS74YJvWAdsyam2JP-w3btJ/pubhtml?gid=1157778684&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
-            <p> The Fraud Dataset provided contains 500 rows and 7 columns. </p>
-            <p> The columns are: </p>
-            <p> 1) index: specifies the row ID in dataset </p>
-            <p> 2) type: specifies the kind of transaction made (e.g. PAYMENT, DEBIT, TRANSFER) </p>
-            <p> 3) amount: specifies the amount of money involved in the transaction </p>
-            <p> 4) oldbalanceOrg: displays the original balance of the account </p>
-            <p> 5) newbalanceOrg: displays the new balance of account after transaction </p>
-            <p> 6) oldbalanceDest: displays the old balance of the destination account, which is the account in which money will be transferred to </p>
-            <p> 7) newbalanceDest: displays the new balance of destination account , which is the account in which money has been transferred to </p>
-            <p> 8) isFraud: indicates the possibility that a transaction is fraud where 1 = yes and 0 = no </p>
+            <p class="font-weight-normal"> The Fraud Dataset provided contains 500 rows and 7 columns. </p>
+            <ol class="font-weight-normal"> The columns are: 
+              <li>index: specifies the row ID in dataset</li>
+              <li>type: specifies the kind of transaction made (e.g. PAYMENT, DEBIT, TRANSFER) </li>
+              <li>amount: specifies the amount of money involved in the transaction </li>
+              <li>oldbalanceOrg: displays the original balance of the account </li>
+              <li>newbalanceOrg: displays the new balance of account after transaction </li>
+              <li>oldbalanceDest: displays the old balance of the destination account, which is the account in which money will be transferred to </li>
+              <li>newbalanceDest: displays the new balance of destination account , which is the account in which money has been transferred to </li>
+              <li>isFraud: indicates the possibility that a transaction is fraud where 1 = yes and 0 = no </li>
+            </ol>
             
-            &nbsp;&nbsp;&nbsp;&nbsp;.
-            <h1> Let's get started and install Pandas package in your desktop! </h1>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <h3 class="font-weight-bold">Let's start by installing Pandas package in your desktop!</h3>
 
             <iframe style ="width:800px; height:500px;" src="https://www.youtube.com/embed/8Sipkd9vNKk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
 
-            <h1> 1. Load in File</h1>
-            <h2> 1.1. Loading in Data </h2>
-            <p> Loading data from different types of file (.txt or .csv or .xlsx) </p>
-            <p> </p>
-            <p> Step 1: Save file in same folder as current Python script. </p>
-            <p> Step 2: Open file </p>
-            <ul> 
+          <div id="LoadInData" class="tabcontent" style="display:none">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <h2 class="font-weight-bold"> 1. Load in File</h2>
+            <h4 class="font-weight-bold"> 1.1. Loading in Data </h4>
+            <p class="font-weight-normal">Loading data from different types of file (.txt or .csv or .xlsx)</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <p class="font-weight-normal"> Step 1: Save file in same folder as current Python script. </p>
+            <p class="font-weight-normal"> Step 2: Open file </p>
+            <ul class="font-weight-normal"> 
               <li> For CSV file </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/loadcsv.html" width="100%"></iframe>
               <li> For Text file </li>
@@ -173,10 +179,10 @@
 
             <mcq-test v-bind:int-Question=0></mcq-test>
 
-            <h2> 1.2. Checking Loaded Data </h2>
-            <p> Always make it a practice to check that our data has been loaded correctly (meaning all columns and rows are loaded). </p>
-            <p> Step 1: Check the number of rows and columns. </p>
-            <ul>
+            <h4 class="font-weight-bold"> 1.2. Checking Loaded Data </h4>
+            <p class="font-weight-normal"> Always make it a practice to check that our data has been loaded correctly (meaning all columns and rows are loaded). </p>
+            <p class="font-weight-normal"> Step 1: Check the number of rows and columns. </p>
+            <ul class="font-weight-normal">
               <li> Showing the number of rows then number of columns. </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfShape.html" width="100%"></iframe>
               <li> Print out results to interpret numbers easily. </li>
@@ -190,15 +196,15 @@
             <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
             </head>
 
-            <p> Step 2: Check the first few rows. </p>
-            <ul>
+            <p class="font-weight-normal"> Step 2: Check the first few rows. </p>
+            <ul class="font-weight-normal">
               <li> Display first 5 rows of data. </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showFirst5.html" width="100%"></iframe>
               <li> Display first 10 rows of data. </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showFirst10.html" width="100%"></iframe>
             </ul>
-            <p> Step 3: Check the last few rows. </p>
-            <ul>
+            <p class="font-weight-normal"> Step 3: Check the last few rows. </p>
+            <ul class="font-weight-normal">
               <li> Display last 5 rows of data. </li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showLast5.html" width="100%"></iframe>
               <li> Display last 20 rows of data. </li>
@@ -206,15 +212,16 @@
             </ul>
             <mcq-test v-bind:int-Question=1></mcq-test>
           
-            <h3>Section 1 Post-Activity 1</h3>
+            <h3 class="font-weight-bold">Post-Activity 1</h3>
                 <doctest-activity v-bind:layout-things=questions[0].layoutItems v-bind:question-name=questions[0].hidden></doctest-activity>
             <br>
-            <h3>Section 1 Post-Activity 2</h3>
+            <h3 class="font-weight-bold">Post-Activity 2</h3>
                 <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].hidden></doctest-activity>
             <br>
           </div>
       
           <div id="DataEx" class="tabcontent" style="display:none">
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <h1> 2. Data Exploration </h1>
             <h2> Exploratory Data Analysis </h2>
             <p> Exploratory Data Analysis (EDA) is performed in which mean, standard deviation and correlation etc. are found between variables. This gives us a better understanding of the data we are dealing with. </p>
@@ -259,6 +266,7 @@
           </div>
 
           <div id="DataC" class="tabcontent" style="display:none">
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <h1> 3. Data Cleaning </h1>
             <h2> 3.1. Checking for NA rows and columns </h2>
             <p> In reality, datasets are full of inconsistencies such as missing values due to poor data collection and management practices. To avoid running into errors when furthering our analysis, we need to clean our data. </p>
@@ -285,13 +293,14 @@
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfReplaceNA.html" width="100%"></iframe>
             <mcq-test v-bind:int-Question=3></mcq-test>
             
-            <!-- <h3>Section 3 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].name></doctest-activity>
-            <br> -->
+            <h3>Section 3 Post-Activity</h3>
+              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].hidden></doctest-activity>
+            <br>
 
           </div>
 
           <div id="SubData" class="tabcontent" style="display:none">
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <h1> 4. Subsetting Data </h1>
             <h2> 4.1. Subsetting based on a single condition </h2>
             <p> Understanding data better by subsetting smaller sections that are of our interest. </p>
@@ -307,11 +316,12 @@
 
 
             <h3>Section 4 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].hidden></doctest-activity>
+              <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[3].hidden></doctest-activity>
             <br>
           </div>
 
           <div id="SortData" class="tabcontent" style="display:none">
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <h1> 5. Sorting Data </h1>
             <h2> 5.1. Sorting in Ascending Order </h2>
             <p> Sorting can help to easily identify the largest or smallest rows of data. </p>
@@ -338,7 +348,7 @@
 
             </div>
             <h3>Section 5 Post-Activity</h3>
-              <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[4].hidden></doctest-activity>
+              <doctest-activity v-bind:layout-things=questions[5].layoutItems v-bind:question-name=questions[4].hidden></doctest-activity>
             <br>
 
             <p><a href="#" class="btn btn-primary py-3 px-3">Try Project!</a></p>
@@ -419,6 +429,30 @@
     <script src="https://unpkg.com/vue-material@beta"></script>
     <script>
 
+    function moveScroller() {
+      var $anchor = $("#scroller-anchor");
+      var $scroller = $('#scroller');
+      
+      var move = function() {
+        var st = $(window).scrollTop();
+        var ot = $anchor.offset().top;
+        if(st > ot) {
+          $scroller.css({
+            position: "fixed",
+            top: "0px",
+            align: "center"
+          });
+        } else {
+          $scroller.css({
+            position: "relative",
+            top: ""
+          });
+        }
+      };
+      $(window).scroll(move);
+      move();
+    }
+
     function openTab(tabName) {
       var i;
       var x = document.getElementsByClassName("tabcontent");
@@ -431,33 +465,33 @@
     Vue.use(VueMaterial.default)
     
     Vue.component('doctest-activity', {
-        props: ['layoutThings', 'questionName'],
-        data: function () {
-            return {
-            answer:"",
-            layoutItems: this.layoutThings
+      props: ['layoutThings', 'questionName'],
+      data: function () {
+        return {
+          answer:"",
+          layoutItems: this.layoutThings
         }
-        },
-        methods: {
-            postContents: function () {
-            // comment: leaving the gatewayUrl empty - API will post back to itself
-            const gatewayUrl = '';
-            fetch(gatewayUrl, {
-        method: "POST",
-        headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({hidden: {0:this.questionName}, editable:{0:this.layoutItems[0].vModel}})          //<!-- Edited Here -->
-        }).then(response => {
+      },
+      methods: {
+        postContents: function () {
+        // comment: leaving the gatewayUrl empty - API will post back to itself
+          const gatewayUrl = '';
+          fetch(gatewayUrl, {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({hidden: {0:this.questionName}, editable:{0:this.layoutItems[0].vModel}})          //<!-- Edited Here -->
+          }).then(response => {
             return response.json()
-        }).then(data => {
+          }).then(data => {
             this.answer = JSON.parse(JSON.stringify(data))
             return this.$emit('questionhandler',{data, questionName:this.questionName})
-            })
-         }
-        },
-        template: '<div class="md-layout  md-gutter">\
+          })
+        }
+      },
+      template: '<div class="md-layout  md-gutter">\
         <div id="cardGroupCreator" class="md-layout-item md-size-100">\
             <md-card v-for="layoutItem in layoutItems" :key=layoutItem.header>\
                 <md-card-header>\
@@ -496,155 +530,155 @@
     })
 
     Vue.component('mcq-test', {
-        props:['intQuestion'],
-        data: function () {
-            return {
-              //integer: this.intQuestion,
-              mcq:[
-              {hidden: "mcq1", question: "How do you open a text file named 'StockData' that has tabs between them?",
-              choiceA: "df = pd.read_excel('StockData.txt')",
-              choiceB: "df = pd.read_csv('StockData.txt', delimiter = '\t')",
-              choiceC: "df = pd.read_csv('StockData.txt', delimiter = ',')",
-              correct: "B",
-              checkedGreen: false,
-              checkedRed: false,
-              user: "",
-              resA: "read excel doesn't open text files. Try Again!",
-              resB: "Awesome!",
-              resC: "delimiter = ',' is for comma separated data files only. Try Again!",
-              response: ""
-              },
-              {hidden: "mcq2", question: "What is the command to see the first 5 rows of the dataframe?",
-              choiceA: "df.head()",
-              choiceB: "df.tail()",
-              choiceC: "df.first()",
-              correct: "A",
-              checkedGreen: false,
-              checkedRed: false,
-              user: "",
-              resA: "Awesome!",
-              resB: "tail() sounds like it is the end of the dataframe. Try Again!",
-              resC: "first() doesn't sound familiar. Try Again!",
-              response: ""
-              },
-              {hidden: "mcq3", question: "Will variables of string data type appear in the Table of means?",
-              choiceA: "I don't know",
-              choiceB: "Yes, variables of string data type will have a mean value",
-              choiceC: "No, the means of variables with string data type will not be computed",
-              correct: "C",
-              checkedGreen: false,
-              checkedRed: false,
-              user: "",
-              resA: "Try it out! You can do it!",
-              resB: "A mean value for string data type?",
-              resC: "Awesome",
-              response: ""
-              },
-              {hidden: "mcq4", question: "Which of the following will return a matrix of total null values for each column?",
-              choiceA: "df",
-              choiceB: "df.isnull().sum()",
-              choiceC: "df.isnull()",
-              correct: "B",
-              checkedGreen: false,
-              checkedRed: false,
-              user: "",
-              resA: "df returns the entire dataframe",
-              resB: "Awesome!",
-              resC: "df.isnull() returns a dataframe populated with Boolean values that indicates if the cell is null or not",
-              response: ""
-              },
-              {hidden: "mcq5", question: "What is the correct code to subset data where 'profit' is at least $150 OR 'loss' == 0?",
-              choiceA: "df[ (df['profit'] >= 150) | (df['loss'] == 0)]",
-              choiceB: "df[ (df['profit'] >= 150) & (df['loss'] == 0)]",
-              choiceC: "This is too hard!",
-              correct: "A",
-              checkedGreen: false,
-              checkedRed: false,
-              user: "",
-              resA: "Awesome!",
-              resB: "'&' symbol represents 'AND'. Recall what symbol represents 'OR'",
-              resC: "Don't Give Up! :)",
-              response: ""
-              },
-              {hidden: "mcq6", question: "What is the default sorting for function sort_values?",
-              choiceA: "Ascending",
-              choiceB: "Values will not be sorted",
-              choiceC: "Descending",
-              correct: "A",
-              checkedGreen: false,
-              checkedRed: false,
-              user: "",
-              resA: "Awesome!",
-              resB: "It will be sorted! Try Again! :)",
-              resC: "Recall what is the additional parameter that is in the function sort_value.",
-              response: ""
-              },
+      props:['intQuestion'],
+      data: function () {
+          return {
+            //integer: this.intQuestion,
+            mcq:[
+            {hidden: "mcq1", question: "How do you open a text file named 'StockData' that has tabs between them?",
+            choiceA: "df = pd.read_excel('StockData.txt')",
+            choiceB: "df = pd.read_csv('StockData.txt', delimiter = '\t')",
+            choiceC: "df = pd.read_csv('StockData.txt', delimiter = ',')",
+            correct: "B",
+            checkedGreen: false,
+            checkedRed: false,
+            user: "",
+            resA: "read excel doesn't open text files. Try Again!",
+            resB: "Awesome!",
+            resC: "delimiter = ',' is for comma separated data files only. Try Again!",
+            response: ""
+            },
+            {hidden: "mcq2", question: "What is the command to see the first 5 rows of the dataframe?",
+            choiceA: "df.head()",
+            choiceB: "df.tail()",
+            choiceC: "df.first()",
+            correct: "A",
+            checkedGreen: false,
+            checkedRed: false,
+            user: "",
+            resA: "Awesome!",
+            resB: "tail() sounds like it is the end of the dataframe. Try Again!",
+            resC: "first() doesn't sound familiar. Try Again!",
+            response: ""
+            },
+            {hidden: "mcq3", question: "Will variables of string data type appear in the Table of means?",
+            choiceA: "I don't know",
+            choiceB: "Yes, variables of string data type will have a mean value",
+            choiceC: "No, the means of variables with string data type will not be computed",
+            correct: "C",
+            checkedGreen: false,
+            checkedRed: false,
+            user: "",
+            resA: "Try it out! You can do it!",
+            resB: "A mean value for string data type?",
+            resC: "Awesome",
+            response: ""
+            },
+            {hidden: "mcq4", question: "Which of the following will return a matrix of total null values for each column?",
+            choiceA: "df",
+            choiceB: "df.isnull().sum()",
+            choiceC: "df.isnull()",
+            correct: "B",
+            checkedGreen: false,
+            checkedRed: false,
+            user: "",
+            resA: "df returns the entire dataframe",
+            resB: "Awesome!",
+            resC: "df.isnull() returns a dataframe populated with Boolean values that indicates if the cell is null or not",
+            response: ""
+            },
+            {hidden: "mcq5", question: "What is the correct code to subset data where 'profit' is at least $150 OR 'loss' == 0?",
+            choiceA: "df[ (df['profit'] >= 150) | (df['loss'] == 0)]",
+            choiceB: "df[ (df['profit'] >= 150) & (df['loss'] == 0)]",
+            choiceC: "This is too hard!",
+            correct: "A",
+            checkedGreen: false,
+            checkedRed: false,
+            user: "",
+            resA: "Awesome!",
+            resB: "'&' symbol represents 'AND'. Recall what symbol represents 'OR'",
+            resC: "Don't Give Up! :)",
+            response: ""
+            },
+            {hidden: "mcq6", question: "What is the default sorting for function sort_values?",
+            choiceA: "Ascending",
+            choiceB: "Values will not be sorted",
+            choiceC: "Descending",
+            correct: "A",
+            checkedGreen: false,
+            checkedRed: false,
+            user: "",
+            resA: "Awesome!",
+            resB: "It will be sorted! Try Again! :)",
+            resC: "Recall what is the additional parameter that is in the function sort_value.",
+            response: ""
+            },
 
 
-            ]
-        }
-        },
-        methods: {
-            checkAnswer: function(answer) {       //intQuestion should be 1, 2 or 3 depending on order of qns
-                                                                //answer should be the "A", "B" or "C"
-              this.user = answer;
-              //intQuestion = parseInt(this.$props.intquestion);
-              if (answer == "A"){
-                this.response = this.mcq[this.intQuestion].resA;
-                console.log("goes into A")
-              }else if(answer == "B"){
-                this.response = this.mcq[this.intQuestion].resB;
-                console.log("goes into B")
-              }else if(answer == "C"){
-                this.response = this.mcq[this.intQuestion].resC;
-                console.log("goes into C")
-              }else{
-                this.response = "Try Again"
-              }
-
-              this.mcq[this.intQuestion].checkedGreen = false;
-              this.mcq[this.intQuestion].checkedRed =  false;
-
-              if (this.mcq[this.intQuestion].correct == answer){
-                this.mcq[this.intQuestion].checkedGreen =  true;
-                this.mcq[this.intQuestion].checkedRed =  false;
-              }else{
-                this.mcq[this.intQuestion].checkedRed =  true;
-                this.mcq[this.intQuestion].checkedGreen =  false;
-              }
-              
-              console.log(this.response)
-            }
-        },
-        computed:{
-          buttonStyles(){
-            if(this.mcq[this.intQuestion].checkedGreen == true){
-              color = "#228B22"
-            }else if(this.mcq[this.intQuestion].checkedRed == true){
-              color = "#B22222"
+          ]
+      }
+      },
+      methods: {
+          checkAnswer: function(answer) {       //intQuestion should be 1, 2 or 3 depending on order of qns
+                                                              //answer should be the "A", "B" or "C"
+            this.user = answer;
+            //intQuestion = parseInt(this.$props.intquestion);
+            if (answer == "A"){
+              this.response = this.mcq[this.intQuestion].resA;
+              console.log("goes into A")
+            }else if(answer == "B"){
+              this.response = this.mcq[this.intQuestion].resB;
+              console.log("goes into B")
+            }else if(answer == "C"){
+              this.response = this.mcq[this.intQuestion].resC;
+              console.log("goes into C")
             }else{
-              color = "white"
+              this.response = "Try Again"
             }
-            return{
-              backgroundColor: color
+
+            this.mcq[this.intQuestion].checkedGreen = false;
+            this.mcq[this.intQuestion].checkedRed =  false;
+
+            if (this.mcq[this.intQuestion].correct == answer){
+              this.mcq[this.intQuestion].checkedGreen =  true;
+              this.mcq[this.intQuestion].checkedRed =  false;
+            }else{
+              this.mcq[this.intQuestion].checkedRed =  true;
+              this.mcq[this.intQuestion].checkedGreen =  false;
             }
+            
+            console.log(this.response)
           }
-        },
-        template:`
+      },
+      computed:{
+        buttonStyles(){
+          if(this.mcq[this.intQuestion].checkedGreen == true){
+            color = "#228B22"
+          }else if(this.mcq[this.intQuestion].checkedRed == true){
+            color = "#B22222"
+          }else{
+            color = "white"
+          }
+          return{
+            backgroundColor: color
+          }
+        }
+      },
+      template:`
         <div style = "padding: 3%">\
-                    <div class = "md-subheading TableTitle" style = "border-style: groove">\
-                      <div style="backgroundColor: grey; height:50px; text-align:center; vertical-align:middle; line-height: 40px; font-size:18px; color: white">{{ this.mcq[this.intQuestion].question}}</div>\
-                      <button  style = "font-size:15px; backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('A')">{{ this.mcq[this.intQuestion].choiceA}}</button>\
-                      <button style = "font-size:15px;backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('B')">{{ this.mcq[this.intQuestion].choiceB}}</button>\
-                      <button style = "font-size:15px;backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('C')">{{ this.mcq[this.intQuestion].choiceC}}</button>\
-                    </div>
-                    <br>
-                    <div v-bind:style="buttonStyles" style="border-style:groove; height:100px; width:100%; padding: 2%">
-                      <p style = "font-weight: bold; font-size:18px; color: black; font-weight:medium" class = "md-subheading TableTitle">Results</p>
-                      <p style = "color: black; text-align: center" class = "md-subheading TableTitle">{{this.response}}</p>
-                    </div>
-                  </div>
-                  `
+          <div class = "md-subheading TableTitle" style = "border-style: groove">\
+            <div style="backgroundColor: grey; height:50px; text-align:center; vertical-align:middle; line-height: 40px; font-size:18px; color: white">{{ this.mcq[this.intQuestion].question}}</div>\
+            <button style = "font-size:15px; backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('A')">{{ this.mcq[this.intQuestion].choiceA}}</button>\
+            <button style = "font-size:15px;backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('B')">{{ this.mcq[this.intQuestion].choiceB}}</button>\
+            <button style = "font-size:15px;backgroundColor: white; width: 100%; padding: 3% 3%; border-style: solid; border-width: 1.5px" @click="checkAnswer('C')">{{ this.mcq[this.intQuestion].choiceC}}</button>\
+          </div>
+          <br>
+          <div v-bind:style="buttonStyles" style="border-style:groove; height:100px; width:100%; padding: 2%">
+            <p style = "font-weight: bold; font-size:18px; color: black; font-weight:medium" class = "md-subheading TableTitle">Results</p>
+            <p style = "color: black; text-align: center" class = "md-subheading TableTitle">{{this.response}}</p>
+          </div>
+        </div>
+      `
     })
     
     new Vue({
@@ -652,6 +686,7 @@
         data: function () {
           return {
             sections:[
+              {name:"Overview", status: " 😄"},
               {name:"Load in Data", status:" 🔴"},
               {name:"Data Exploration", status:" 🔴"},
               {name:"Data Cleaning", status:" 🔴"},
@@ -669,9 +704,12 @@
               {header:"Find the Mean of Each Column", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 4", layoutItems: [
-              {header:"Subset out Data which 'Amount' is greater than 100", subHeader:'Your code goes below', vModel:""}
+              {header:"Find the number of null values in each column", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 5", layoutItems: [
+              {header:"Subset out Data which 'Amount' is greater than 100", subHeader:'Your code goes below', vModel:""}
+              ], status:" 🔴"},
+              {hidden:"question 6", layoutItems: [
               {header:"Sorting Data in descending order according to column 'newbalanceOrig'", subHeader:'Your code goes below', vModel:""}
               ], status:" 🔴"}
             ]
@@ -679,24 +717,28 @@
         },
          methods: {
           toggleSectionStatus (response) {
-
-          },
-          toggleQuestionStatus (response) {
-              const {data, questionName} = response
+              const {data, sectionName} = response
               if (data.htmlFeedback) {
                   const searchText = data.htmlFeedback
                   searchText.search(/b2d8b2/) !== -1 ?
                       searchText.search(/#ff9999/) == -1 ?
-                      this.questions.find(item => item.name === questionName).status = " ✔️"
+                      this.questions.find(item => item.name === sectionName).status = " ✔️"
                       :
-                      this.questions.find(item => item.name === questionName).status = " 🤨"
+                      this.questions.find(item => item.name === sectionName).status = " 🤨"
                   :
-                  this.questions.find(item => item.name === questionName).status = " 🔴"
+                  this.questions.find(item => item.name === sectionName).status = " 🔴"
               }
           }
         }
       })
     </script>
-    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript"> 
+      $(function() {
+        moveScroller();
+      });
+    </script> 
   </body>
 </html>

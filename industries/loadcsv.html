@@ -12,29 +12,34 @@
     
 </head>
 <div class="wrapper">
-              <div class="toolbar">
-              	<button id="clipboard" onclick="myFunction()" class="btn btn-primary btn-xs">Copy</button>
-              </div>
-                <div class="inner" id="editor"># Loading in CSV data
-import pandas as pd
-df = pd.read_csv("fraud_data.csv") # argument specifies name of file</div>
-            </div>
-</div><!--/wrapper-->
+  <div class="toolbar">
+    <button id="clipboard" onclick="myFunction()" class="btn btn-primary btn-xs">Copy</button>
+  </div>
+  <div class="inner" id="editor"># Loading in CSV data
+  import pandas as pd
+  df = pd.read_csv("fraud_data.csv") # argument specifies name of file</div>
+  </div>
+</div>
 </body>
 <script>
     console.log("Initialize Codepad!");
     var editor = ace.edit("editor");
     <!-- prevents user from editing -->
     editor.setReadOnly(true);
-    editor.setTheme("ace/theme/monokai");
+    editor.setTheme("ace/theme/clouds");
     editor.session.setMode("ace/mode/python");
-function myFunction() {
-  /* Get the text field */
-  editor.selectAll()
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
+  function myFunction() {
+    /* Get the text field */
+    var copyText = document.getElementById("editor");
 
-  /* Alert the copied text */
-  /*This might help https://stackoverflow.com/questions/38847800/copy-text-from-%CE%91ce-editor-to-clipboard */
-} 
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+  }
 </script>

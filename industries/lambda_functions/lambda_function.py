@@ -204,7 +204,7 @@ def lambda_handler(event, context):
                 
                 got = got.to_html()
                 
-                # got = got.to_string().replace("\n", "--")
+                # got = got.to_string().replace("\n", "--") 
                 # expected = test.want[:-1]
                 # if got == test.want[:-1]:                                       # use of test.want[:-1] as for some reason, test.want adds an extra space behind the solution
                 #     correct = True

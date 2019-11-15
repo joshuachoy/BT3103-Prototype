@@ -6,7 +6,7 @@ Description: A free and comprehensive platform to learn Python’s Pandas librar
 3. [ AWS Lambda Set-up. ](#lambda)
 
 <a name="s3"></a>
-## 1. AWS S3 Set-up --> Store html, javascript, css, data and pandas library file
+## 1. AWS S3 Set-up.
 #### Go to S3 services.
 a. Create a bucket of a particular region (remember this region as you will need it later).</br>
 b. Go to "Permissions" of this bucket:</br>
@@ -58,3 +58,4 @@ c. You can now use the following code to import pandas. </br>
 ```
 import pandas as pd
 ```
+# hello world

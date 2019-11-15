@@ -143,5 +143,5 @@ c. If edits were made to multiple files, repeat same steps by uploading all the 
 
 <a name="changesLambda"></a>
 ## 2. Making Changes to lambda_function.py File
-a. There is no need to re-upload the .py file
-b. Simply commit from GitHub and lambda function on AWS will be automatically updated. 
+a. There is no need to re-upload the .py file</br>
+b. Simply commit from GitHub and lambda function on AWS will be automatically updated. </br>

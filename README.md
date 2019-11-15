@@ -69,6 +69,22 @@ import pandas as pd
 ```
 
 ## 4. Edit template.yaml file from Github
+Lines 21-29
+<pre>Resources:
+  <b>PandaFunction</b>:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: industries/lambda_functions
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      Layers: 
+        - arn:aws:lambda:us-east-1:<b>895200778545</b>:layer:<b>pandas_layer</b>:<b>1</b>      
+</pre>
+a. Change from: <b>PandaFunction</b> to the name of your own AWS Lambda Function</br>
+b. Change from: <b>895200778545</b> to the user's AWS Account No.</br>
+c. Change from: <b>pandas_layer</b> to the name of the created AWS Lambda Layer</br>
+d. Change from: <b>1</b> to the version number of the created AWS Lambda Layer</br>
+
 
 ## 5. Upload all files onto S3 Bucket
 a. After forking the repo and editing template.yaml, upload all files onto S3 Bucket created previously

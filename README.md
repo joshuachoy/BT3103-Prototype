@@ -109,7 +109,7 @@ b. At line 28, replace *mylambdajosh* with the name of your S3 bucket created pr
 ```
 obj = s3.get_object(Bucket = '<your bucket name>', Key = "short_data.csv")
 ```
-c. At line 261, replace "mylambdajosh" with the name of your S3 bucket created previously as well
+c. At line 261, replace *"mylambdajosh"* with the name of *your S3 bucket created* previously as well
 ```
 file_obj = s3.get_object(Bucket = '<your bucket name>', Key = "project-stock.html")
 ```

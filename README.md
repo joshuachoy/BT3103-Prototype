@@ -5,15 +5,15 @@ Below are some steps to take in order to deploy our website.
 - Note that Steps 1 to 6 are to be completed before forking our project from Github.
 - Note that you would need to activate your GitHub Actions prior to forking. This would ensure the correct setup in AWS environment. 
 
-Setting Up
+**Setting Up**
 1. [ AWS S3 Set-up. ](#s3)
 2. [ AWS IAM Set-up. ](#iam)
 3. [ AWS Lambda Set-up. ](#lambda)
-4. [Edit template.yaml file from GitHub] (#yaml) 
-5. [Upload all files onto S3 Bucket](#updateFiles)
-6. [Update links on Lambda function] (#updateLinks)
-7. [Making Changes to .HTML File] (#changesHTML)
-8. [Making Changes to lambda_function.py File] (#changesLambda)
+4. [ Edit template.yaml file from GitHub. ](#yaml) 
+5. [Upload all files onto S3 Bucket.](#updateFiles)
+6. [Update links on Lambda function.](#updateLinks)
+7. [Making Changes to .HTML File.](#changesHTML)
+8. [Making Changes to lambda_function.py File.](#changesLambda)
 
 # Setting Up 
 <a name="s3"></a>

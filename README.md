@@ -1,5 +1,5 @@
-# Panduh by Team Pikachu (BT3103)
-A free and comprehensive platform to learn Python’s Pandas library through real-word business problems faced by a multitude of industries. 
+# Project name: Panduh by Team Pikachu (BT3103)
+Description: A free and comprehensive platform to learn Python’s Pandas library through real-word business problems faced by a multitude of industries. 
 
 Below are some steps to take in order to deploy our website. 
 - Note that Steps 1 to 3 are to be completed before forking our project from Github.
@@ -84,10 +84,10 @@ Lines 21-29
       Layers: 
         - arn:aws:lambda:us-east-1:<b>895200778545</b>:layer:<b>pandas_layer</b>:<b>1</b>      
 </pre>
-a. Change from: <b>PandaFunction</b> to the name of your own AWS Lambda Function</br>
-b. Change from: <b>895200778545</b> to the user's AWS Account No.</br>
-c. Change from: <b>pandas_layer</b> to the name of the created AWS Lambda Layer</br>
-d. Change from: <b>1</b> to the version number of the created AWS Lambda Layer</br>
+a. Change from: *PandaFunction* to the name of *user's own AWS Lambda Function*</br>
+b. Change from: *895200778545* to the *user's AWS Account No.*</br>
+c. Change from: *pandas_layer* to the name of *user's created AWS Lambda Layer*</br>
+d. Change from: *1* to the version number of *user's created AWS Lambda Layer*</br>
 
 <a name="uploadFiles"></a>
 ## 5. Upload all files onto S3 Bucket
@@ -122,7 +122,7 @@ file_obj = s3.get_object(Bucket = '<your bucket name>', Key = "project-stock.htm
 &nbsp;&nbsp;&nbsp;&nbsp; ii. Click on *Upload*</br>
 &nbsp;&nbsp;&nbsp;&nbsp; iii. Choose your newly updated .html file to upload it</br>
 
-### 1.2 Making .html file publicly accessible
+### 1.2 Making .html file publically accessible
 &nbsp;&nbsp;&nbsp;&nbsp; i. Click on the file that is now listed on the S3 Bucket </br>
 &nbsp;&nbsp;&nbsp;&nbsp; ii. Click on *Actions*</br>
 &nbsp;&nbsp;&nbsp;&nbsp; iii. Under *Actions* click on *Make public*</br>
@@ -137,7 +137,7 @@ b. Replace the links with the S3 Object URL link of this newly added .html file<
 <link rel="stylesheet" href="https://mylambdajosh.s3.amazonaws.com/css/animate.css">
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;Change from: <b>mylambdajosh.s3.amazonaws.com</b> to the name of your own <b>S3 Bucket URL</b></br>
+&nbsp;&nbsp;&nbsp;&nbsp;Change from: *mylambdajosh.s3.amazonaws.com* to the name of your own <b>S3 Bucket URL</b></br>
 
 c. If edits were made to multiple files, repeat same steps by uploading all the newly edited .html files and changing its links respectively to its S3 links
 

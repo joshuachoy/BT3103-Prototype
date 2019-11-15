@@ -1,5 +1,5 @@
-# Project name: Panduh by Team Pikachu (BT3103)
-Description: A free and comprehensive platform to learn Python’s Pandas library through real-word business problems faced by a multitude of industries. 
+# Panduh by Team Pikachu (BT3103)
+A free and comprehensive platform to learn Python’s Pandas library through real-word business problems faced by a multitude of industries. 
 
 Below are some steps to take in order to deploy our website. 
 - Note that Steps 1 to 3 are to be completed before forking our project from Github.

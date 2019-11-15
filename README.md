@@ -5,8 +5,11 @@ Description: A free and comprehensive platform to learn Python’s Pandas librar
 2. [ AWS IAM Set-up. ](#iam)
 3. [ AWS Lambda Set-up. ](#lambda)
 
+
+# Before Forking Repo: 
 <a name="s3"></a>
 ## 1. AWS S3 Set-up.
+**To store files needed -> .html .css .js & data csv file & pandas library** 
 #### Go to S3 services.
 a. Create a bucket of a particular region (remember this region as you will need it later).</br>
 b. Go to "Permissions" of this bucket:</br>
@@ -30,6 +33,7 @@ d. After uploading, click onto the file and copy the *Object URL*. </br>
 
 <a name="iam"></a>
 ## 2. AWS IAM Set-up.
+**Policy will be used to form connection between different AWS services**
 #### Go to IAM services.
 a. Go to "Policies":</br>
 &nbsp;&nbsp;&nbsp;&nbsp; i. Create policy. </br>
@@ -58,4 +62,9 @@ c. You can now use the following code to import pandas. </br>
 ```
 import pandas as pd
 ```
+
+# After Forking Repo:
+## 4. Edit template.yaml file from Github
+
+## 5. 
 

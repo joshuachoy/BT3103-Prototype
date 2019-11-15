@@ -128,7 +128,7 @@ file_obj = s3.get_object(Bucket = '<your bucket name>', Key = "project-stock.htm
 &nbsp;&nbsp;&nbsp;&nbsp; iii. Under *Actions* click on *Make public*</br>
 
 ### 1.3 Updating links on all other .html files
-a. After uploading the edited .html file onto S3 Bucket, you would now need to change the links in all other .html files that are referencing to this newly edited .html file
+a. After uploading the edited .html file onto S3 Bucket, you would now need to change the links in all other .html files that are referencing to this newly edited .html file</br>
 b. Replace the links with the S3 Object URL link of this newly added .html file</br>
 &nbsp;&nbsp;&nbsp;&nbsp; i. To get the S3 Object URL link, click once on the file listed on the S3 Bucket</br>
 &nbsp;&nbsp;&nbsp;&nbsp; ii. A panel will appear on the right of the screen</br>

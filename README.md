@@ -122,7 +122,7 @@ file_obj = s3.get_object(Bucket = '<your bucket name>', Key = "project-stock.htm
 &nbsp;&nbsp;&nbsp;&nbsp; ii. Click on *Upload*</br>
 &nbsp;&nbsp;&nbsp;&nbsp; iii. Choose your newly updated .html file to upload it</br>
 
-### 1.2 Making .html file publically accessible
+### 1.2 Making .html file publicly accessible
 &nbsp;&nbsp;&nbsp;&nbsp; i. Click on the file that is now listed on the S3 Bucket </br>
 &nbsp;&nbsp;&nbsp;&nbsp; ii. Click on *Actions*</br>
 &nbsp;&nbsp;&nbsp;&nbsp; iii. Under *Actions* click on *Make public*</br>

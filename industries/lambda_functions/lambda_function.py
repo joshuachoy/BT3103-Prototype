@@ -366,7 +366,7 @@ def lambda_handler(event, context):
                         
                         
                 if numTestCases > i:
-                    if str(expectedText) == str(receivedText):
+                    if str(expectedText) == str(receivedText): 
                         textResults = textResults + "\nHurray! You have passed the test case. You called {0} and received {1} against the expected value of {2}.\n".format(callText, receivedText, expectedText)
                         textBackgroundColor = "#b2d8b2"
                     else:

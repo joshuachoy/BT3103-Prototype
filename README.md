@@ -1,12 +1,17 @@
 # Project name: Panduh by Team Pikachu (BT3103)
 Description: A free and comprehensive platform to learn Python’s Pandas library through real-word business problems faced by a multitude of industries. 
 
+Below are some steps to take in order to deploy our website. 
+- Note that Steps 1 to 3 are to be completed before forking our project from Github.
+- Note that you would need to activate your GitHub Actions prior to forking. This would ensure the correct setup in AWS environment. 
+
+
 1. [ AWS S3 Set-up. ](#s3)
 2. [ AWS IAM Set-up. ](#iam)
 3. [ AWS Lambda Set-up. ](#lambda)
 
 
-# Before Forking Repo: 
+# Setting Up 
 <a name="s3"></a>
 ## 1. AWS S3 Set-up.
 **To store files needed -> .html .css .js & data csv file & pandas library** 
@@ -63,8 +68,33 @@ c. You can now use the following code to import pandas. </br>
 import pandas as pd
 ```
 
-# After Forking Repo:
 ## 4. Edit template.yaml file from Github
 
-## 5. 
+## 5. Upload all files onto S3 Bucket
+a. After forking the repo and editing template.yaml, upload all files onto S3 Bucket created previously
+b. On S3 Bucket, change ALL files to allow Public access (Note: using Change All button may not be accurate)
 
+## 6. Update links on Lambda function 
+a. Head back to the lambda function created previously
+b. At line 28, replace *mylambdajosh* with the name of your S3 bucket created previously
+```
+obj = s3.get_object(Bucket = '<your bucket name>', Key = "short_data.csv")
+```
+c. At line 261, replace "mylambdajosh" with the name of your S3 bucket created previously as well
+```
+file_obj = s3.get_object(Bucket = '<your bucket name>', Key = "project-stock.html")
+```
+
+# Making Changes to Files
+
+## 1. Making Changes to .HTML File
+### 1.1 Re-upload the new .html file onto S3 Bucket
+
+### 1.2 Updating links on all other .html files
+a. After uploading the edited .html file onto S3 Bucket, you would now need to change the links in all other .html files that are referencing to this newly edited .html file
+b. Replace the links in all .html file that are referencing to this file with the S3 link of this newly added .html file
+c. If edits were made to multiple files, repeat same steps by uploading all the newly edited .html files and changing its links respectively to its S3 links
+
+## 2. Making Changes to lambda_function.py File
+a. There is no need to re-upload the .py file
+b. Simply commit from GitHub and lambda function on AWS will be automatically updated. 

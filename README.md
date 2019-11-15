@@ -104,7 +104,7 @@ b. On S3 Bucket, change ALL files to allow Public access (Note: using Change All
 
 <a name="updateLinks"></a>
 ## 6. Update links on Lambda function 
-a. Head back to the lambda function created previously
+a. Head back to the lambda function created previously</br>
 b. At line 28, replace *mylambdajosh* with the name of your S3 bucket created previously
 ```
 obj = s3.get_object(Bucket = '<your bucket name>', Key = "short_data.csv")

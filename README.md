@@ -9,7 +9,11 @@ Below are some steps to take in order to deploy our website.
 1. [ AWS S3 Set-up. ](#s3)
 2. [ AWS IAM Set-up. ](#iam)
 3. [ AWS Lambda Set-up. ](#lambda)
-
+4. [ Edit template.yaml file from GitHub. ](#yaml) 
+5. [Upload all files onto S3 Bucket.](#updateFiles)
+6. [Update links on Lambda function.](#updateLinks)
+7. [Making Changes to .HTML File.](#changesHTML)
+8. [Making Changes to lambda_function.py File.](#changesLambda)
 
 # Setting Up 
 <a name="s3"></a>
@@ -67,7 +71,7 @@ c. You can now use the following code to import pandas. </br>
 ```
 import pandas as pd
 ```
-
+<a name="yaml"></a>
 ## 4. Edit template.yaml file from Github
 Lines 21-29
 <pre>Resources:
@@ -85,11 +89,12 @@ b. Change from: <b>895200778545</b> to the user's AWS Account No.</br>
 c. Change from: <b>pandas_layer</b> to the name of the created AWS Lambda Layer</br>
 d. Change from: <b>1</b> to the version number of the created AWS Lambda Layer</br>
 
-
+<a name="uploadFiles"></a>
 ## 5. Upload all files onto S3 Bucket
 a. After forking the repo and editing template.yaml, upload all files onto S3 Bucket created previously
 b. On S3 Bucket, change ALL files to allow Public access (Note: using Change All button may not be accurate)
 
+<a name="updateLinks"></a>
 ## 6. Update links on Lambda function 
 a. Head back to the lambda function created previously
 b. At line 28, replace *mylambdajosh* with the name of your S3 bucket created previously
@@ -102,7 +107,7 @@ file_obj = s3.get_object(Bucket = '<your bucket name>', Key = "project-stock.htm
 ```
 
 # Making Changes to Files
-
+<a name="changesHTML"></a>
 ## 1. Making Changes to .HTML File
 ### 1.1 Re-upload the new .html file onto S3 Bucket
 
@@ -116,6 +121,7 @@ b. Replace the links in all .html file that are referencing to this file with th
 
 c. If edits were made to multiple files, repeat same steps by uploading all the newly edited .html files and changing its links respectively to its S3 links
 
+<a name="changesLambda"></a>
 ## 2. Making Changes to lambda_function.py File
 a. There is no need to re-upload the .py file
 b. Simply commit from GitHub and lambda function on AWS will be automatically updated. 

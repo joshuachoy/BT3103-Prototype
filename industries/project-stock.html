@@ -124,7 +124,7 @@
               <span>{{ questions[5].status }}</span>
             </label>
             <label class="btn btn-primary" onclick="openTab('FinalProj')">
-              <input type="radio" autocomplete="off"> Project
+              <input type="radio" autocomplete="off"> Mini-Project
               <span> 💪 </span>
             </label>
           </div>
@@ -144,7 +144,7 @@
             <p> Loaded in the table below is the dataset. Take some time to explore the data. </p>
 
             <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTxLAhPejZjOPpuM7jgq6vhy6Y5FVqAV_oK0JKlrc1PsR9IPEAp1eccHHS74YJvWAdsyam2JP-w3btJ/pubhtml?gid=1157778684&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <p> The Fraud Dataset provided contains 500 rows and 7 columns. </p>
             <ol> The columns are: 
               <li>index: specifies the row ID in dataset</li>
@@ -166,30 +166,30 @@
 
           <div id="LoadInData" class="tabcontent" style="display:none">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <h1> 1. Load in File</h1>
-            <h2> 1.1. Loading in Data </h1>
+            <h1>1. Load in File</h1>
+            <h2>1.1. Loading in Data</h1>
             <p>Loading data from different types of file (.txt or .csv or .xlsx)</p>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <p> Step 1: Save file in same folder as current Python script. </p>
-            <p> Step 2: Open file </p>
+            <p>Step 1: Save file in same folder as current Python script.</p>
+            <p>Step 2: Open file</p>
             <ul> 
-              <li> For CSV file </li>
+              <li>For CSV file</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/loadcsv.html" width="100%"></iframe>
-              <li> For Text file </li>
+              <li>For Text file</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/loadtxt.html" width="100%"></iframe>
-              <li> For Excel file </li>
+              <li>For Excel file</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/loadexcel.html" width="100%"></iframe>
             </ul>
 
             <mcq-test v-bind:int-Question=0></mcq-test>
 
-            <h2> 1.2. Checking Loaded Data </h2>
-            <p> Always make it a practice to check that our data has been loaded correctly (meaning all columns and rows are loaded). </p>
-            <p> Step 1: Check the number of rows and columns. </p>
+            <h2>1.2. Checking Loaded Data</h2>
+            <p>Always make it a practice to check that our data has been loaded correctly (meaning all columns and rows are loaded).</p>
+            <p>Step 1: Check the number of rows and columns.</p>
             <ul>
-              <li> Showing the number of rows then number of columns. </li>
+              <li>Showing the number of rows then number of columns.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfShape.html" width="100%"></iframe>
-              <li> Print out results to interpret numbers easily. </li>
+              <li>Print out results to interpret numbers easily.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/printRowCol.html" width="100%"></iframe>
             </ul>
 
@@ -200,18 +200,18 @@
             <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
             </head>
 
-            <p> Step 2: Check the first few rows. </p>
+            <p>Step 2: Check the first few rows.</p>
             <ul>
-              <li> Display first 5 rows of data. </li>
+              <li>Display first 5 rows of data.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showFirst5.html" width="100%"></iframe>
-              <li> Display first 10 rows of data. </li>
+              <li>Display first 10 rows of data.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showFirst10.html" width="100%"></iframe>
             </ul>
-            <p> Step 3: Check the last few rows. </p>
+            <p>Step 3: Check the last few rows.</p>
             <ul>
-              <li> Display last 5 rows of data. </li> 
+              <li>Display last 5 rows of data.</li> 
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showLast5.html" width="100%"></iframe>
-              <li> Display last 20 rows of data. </li>
+              <li>Display last 20 rows of data.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/showLast20.html" width="100%"></iframe>
             </ul>
             <mcq-test v-bind:int-Question=1></mcq-test>
@@ -219,102 +219,103 @@
             <h3>Post-Learning-Activity!</h3>
                 <doctest-activity v-bind:layout-things=questions[1].layoutItems v-bind:question-name=questions[1].hidden @sectionhandler="toggleSectionStatus"/>
             <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
       
           <div id="DataEx" class="tabcontent" style="display:none">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <h1> 2. Data Exploration </h1>
-            <h2> Exploratory Data Analysis </h2>
-            <p> Exploratory Data Analysis (EDA) is performed in which mean, standard deviation and correlation etc. are found between variables. This gives us a better understanding of the data we are dealing with. </p>
-            <p> Step 1: Finding Mean of Variables. </p>
+            <h1>2. Data Exploration</h1>
+            <h2>Exploratory Data Analysis</h2>
+            <p>Exploratory Data Analysis (EDA) is performed in which mean, standard deviation and correlation etc. are found between variables. This gives us a better understanding of the data we are dealing with.</p>
+            <p>Step 1: Finding Mean of Variables.</p>
             <ul>
-              <li> The function .mean() can be called to the dataframe. It will return the mean values of each variable of type numeric and float. </li>
-              <li> Note that the resulting table of mean does not include variables of string data type (e.g. column “type”). </li>
+              <li>The function .mean() can be called to the dataframe. It will return the mean values of each variable of type numeric and float.</li>
+              <li>Note that the resulting table of mean does not include variables of string data type (e.g. column “type”).</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfMean.html" width="100%"></iframe>
-              <li style="color:red;"> Show output table here. </li>
             </ul>
-            <p> Step 2: Finding Median of Variables. </p>
+            <p>Step 2: Finding Median of Variables.</p>
             <ul>
-              <li> The function .median() can be called to the dataframe. It will return the median value of each variable of type numeric and float. </li>
+              <li>The function .median() can be called to the dataframe. It will return the median value of each variable of type numeric and float.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfMedian.html" width="100%"></iframe>
-              <li style="color:red;"> Show output table here. </li>
             </ul>
 
-            <p> Step 3: Finding Standard Deviation of Variables. </p>
+            <p>Step 3: Finding Standard Deviation of Variables.</p>
             <ul>
-              <li> The function .std() can be called to the dataframe. It will return the standard deviation value of each variable of type numeric and float. </li>
+              <li>The function .std() can be called to the dataframe. It will return the standard deviation value of each variable of type numeric and float.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfStandardDe.html" width="100%"></iframe>
-              <li style="color:red;"> Show output table here. </li>
             </ul>
 
-            <p> Step 4: Finding Correlations between Variables. </p>
+            <p>Step 4: Finding Correlations between Variables.</p>
             <ul>
-              <li> The function .corr() can be called to the dataframe. It will return the correlation value between every variable of type numeric and float. </li>
+              <li>The function .corr() can be called to the dataframe. It will return the correlation value between every variable of type numeric and float.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfCorr.html" width="100%"></iframe>
             </ul>
             <div class="row justify-content-center">
 
               <div>
-                <h3> df.corr() </h3>
+                <h3>df.corr()</h3>
                 <iframe style = "width:1200px; height:250px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=0&single=true"></iframe>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <p>Correlation values range from -1 to 1. The greater the value means that there is a greater correlation between these 2 variables.
+                  Negative correlation means that when variable A increases, variable B decreases. Positive correlation means that when variable A increases, variable B increases too.
+                </p>
               </div>
             </div>
             <mcq-test v-bind:int-Question=2></mcq-test>
             <h3>Post-Learning-Activity!</h3>
                 <doctest-activity v-bind:layout-things=questions[2].layoutItems v-bind:question-name=questions[2].hidden  @sectionhandler="toggleSectionStatus"/>
             <br>
-
+            &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
 
           <div id="DataC" class="tabcontent" style="display:none">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <h1> 3. Data Cleaning </h1>
-            <h2> 3.1. Checking for NA rows and columns </h2>
-            <p> In reality, datasets are full of inconsistencies such as missing values due to poor data collection and management practices. To avoid running into errors when furthering our analysis, we need to clean our data. </p>
-            <p> Step 1: Examine if data entries are null values. </p>
+            <h1>3. Data Cleaning</h1>
+            <h2>3.1. Checking for NA rows and columns</h2>
+            <p>In reality, datasets are full of inconsistencies such as missing values due to poor data collection and management practices. To avoid running into errors when furthering our analysis, we need to clean our data.</p>
+            <p>Step 1: Examine if data entries are null values.</p>
             <ul>
-              <li> This method is only suitable for small datasets as it is hard to examine numerous rows and columns. </li>
+              <li>This method is only suitable for small datasets as it is hard to examine numerous rows and columns.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfNull.html" width="100%"></iframe>
             </ul>
-            <h3> df.isNull() </h3>
+            <h3>df.isNull()</h3>
             <ul>
               <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=1148384071&single=true"></iframe>
             </ul>
-            <p> Step 2: More concise method to checking for null values. </p>
+            <p>Step 2: More concise method to checking for null values.</p>
             <ul>
-              <li> Show the sum of null values in each column. </li>
+              <li>Show the sum of null values in each column.</li>
               <iframe src="https://mylambdajosh.s3.amazonaws.com/dfNullSum.html" width="100%"></iframe>
-              <li style="color:red;"> Show output table here. </li>
+              <p>As a data analyst, it is important to know whether the dataset contains many null values as if there are, it might result in a biased analysis.</p>
             </ul>
 
-            <h2> 3.2. Dealing with NA values </h2>
-            <p> Method 1: Dropping all rows that have at least 1 null value. </p>
+            <h2>3.2. Dealing with NA values</h2>
+            <p>After identifying how many null values there are in the dataset, you must be wondering how can you deal with them. Well, there are 2 methods!</p>
+            <p>Method 1: Dropping all rows that have at least 1 null value.</p>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfDropNA.html" width="100%"></iframe>
-            <p> Method 2: Replacing null values with the computed mean of column/variable. </p>
+            <p>Method 2: Replacing null values with the computed mean of column/variable.</p>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfReplaceNA.html" width="100%"></iframe>
             <mcq-test v-bind:int-Question=3></mcq-test>
             
             <h3>Post-Learning-Activity!</h3>
               <doctest-activity v-bind:layout-things=questions[3].layoutItems v-bind:question-name=questions[3].hidden  @sectionhandler="toggleSectionStatus"/>
             <br>
-
+            &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
 
           <div id="SubData" class="tabcontent" style="display:none">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <h1> 4. Subsetting Data </h1>
-            <h2> 4.1. Subsetting based on a single condition </h2>
-            <p> Understanding data better by subsetting smaller sections that are of our interest. </p>
+            <h1>4. Subsetting Data</h1>
+            <h2>4.1. Subsetting based on a single condition</h2>
+            <p>Understanding data better by subsetting smaller sections that are of our interest.</p>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfSubsetSingle.html" width="100%"></iframe>
-            <p style="color:red;"> Show output table here. </p>
 
-            <h2> 4.2. Subsetting based on multiple condition </h2>
-            <p> & refers to “and” where both conditions has to be satisfied. </p>
-            <p> | refers to “or” where either condition has to be satisfied. </p>
+            <h2>4.2. Subsetting based on multiple condition</h2>
+            <p>& refers to “and” where both conditions has to be satisfied.</p>
+            <p>| refers to “or” where either condition has to be satisfied.</p>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfSubsetMultiple.html" width="100%"></iframe>
-            <p style="color:red;"> Show output table here. </p>
+            <p>It is important to know how to subset data as when analysing industrial datasets, we will only be interested in some columns of a particular value.</p>
             <mcq-test v-bind:int-Question=4></mcq-test>
-
 
             <h3>Post-Learning-Activity!</h3>
               <doctest-activity v-bind:layout-things=questions[4].layoutItems v-bind:question-name=questions[4].hidden  @sectionhandler="toggleSectionStatus"/>
@@ -323,34 +324,28 @@
 
           <div id="SortData" class="tabcontent" style="display:none">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <h1> 5. Sorting Data </h1>
-            <h2> 5.1. Sorting in Ascending Order </h2>
-            <p> Sorting can help to easily identify the largest or smallest rows of data. </p>
+            <h1>5. Sorting Data</h1>
+            <h2>5.1. Sorting in Ascending Order</h2>
+            <p>Sorting can help to easily identify the largest or smallest rows of data.</p>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfSortingAscending.html" width="100%"></iframe>
-            <div class="row justify-content-center">
-
-              <div>
-                <h3> Sorting - Ascending Order </h3>
-                <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=411973687&single=true"></iframe>
-              </div>
-            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <h3>Sorting - Ascending Order</h3>
+              <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=411973687&single=true"></iframe>
             <br>
-            <h2> 5.2. Sorting in Descending Order </h2>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <h2>5.2. Sorting in Descending Order</h2>
             <iframe src="https://mylambdajosh.s3.amazonaws.com/dfSortingDescending.html" width="100%"></iframe>
-            <div class="row justify-content-center">
-              
-              <div>
-              
-                <h3> Sorting - Descending Order </h3>
-                <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=1748770864&single=true"></iframe>
-                <mcq-test v-bind:int-Question=5></mcq-test>
-              </div>
-
-            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <h3>Sorting - Descending Order</h3>
+              <iframe style = "width:1200px; height:400px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwMhm8TtteDrr4b9evXy3va8U2ztEn6MdMkszi4Tz4nfU3s2cTmLPgPoQF6gAz64mw7CK0iUWaIhkB/pubhtml?gid=1748770864&single=true"></iframe>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <mcq-test v-bind:int-Question=5></mcq-test>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <h3>Post-Learning-Activity!</h3>
               <doctest-activity v-bind:layout-things=questions[5].layoutItems v-bind:question-name=questions[5].hidden  @sectionhandler="toggleSectionStatus"/>
             <br>
-
+            &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           
           <div id="FinalProj" class="tabcontent" style="display:none">
@@ -381,8 +376,8 @@
             <h3>Question 5:</h3>
               <doctest-activity v-bind:layout-things=questions[10].layoutItems v-bind:question-name=questions[10].hidden></doctest-activity>
             <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
-
         </div>
       </div>
     </div>
@@ -724,37 +719,37 @@
             ],
             questions:[
               {hidden:"question 1", layoutItems: [
-              {header:"Print the Dimensions of Loaded Data", subHeader:'Your code goes below', vModel:""}
+              {header:"Print the Dimensions of Loaded Data", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 2", layoutItems: [
-              {header:"Show the First Five Rows of Data", subHeader:'Your code goes below', vModel:""}
+              {header:"Show the First Five Rows of Data", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 3", layoutItems: [
-              {header:"Find the Mean of Each Column", subHeader:'Your code goes below', vModel:""}
+              {header:"Find the Mean of Each Column", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 4", layoutItems: [
-              {header:"Find the number of null values in each column", subHeader:'Your code goes below', vModel:""}
+              {header:"Find the number of null values in each column", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 5", layoutItems: [
-              {header:"Subset out Data which 'amount' is greater than 100", subHeader:'Your code goes below', vModel:""}
+              {header:"Subset out Data which 'amount' is greater than 100", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"question 6", layoutItems: [
-              {header:"Sorting Data in descending order according to column 'newbalanceOrig'", subHeader:'Your code goes below', vModel:""}
+              {header:"Sorting Data in descending order according to column 'newbalanceOrig'", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"projectQn 1", layoutItems: [
-              {header:"Print the Dimensions of Loaded Data", subHeader:'Your code goes below', vModel:""}
+              {header:"Print the Dimensions of Loaded Data", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"projectQn 2", layoutItems: [
-              {header:"Show the Last 10 Rows of Data", subHeader:'Your code goes below', vModel:""}
+              {header:"Show the Last 10 Rows of Data", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"projectQn 3", layoutItems: [
-              {header:"Find the Median of Each Column", subHeader:'Your code goes below', vModel:""}
+              {header:"Find the Median of Each Column", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"projectQn 4", layoutItems: [
-              {header:"Subset out Data which 'isFraud' is equal to 1", subHeader:'Your code goes below', vModel:""}
+              {header:"Subset out Data which 'isFraud' is equal to 1", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"},
               {hidden:"projectQn 5", layoutItems: [
-              {header:"Sorting Data in descending order according to column 'amount'", subHeader:'Your code goes below', vModel:""}
+              {header:"Sorting Data in descending order according to column 'amount'", subHeader:'Name of variable that stores dataframe: df', vModel:""}
               ], status:" 🔴"}
             ]
           }

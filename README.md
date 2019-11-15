@@ -2,20 +2,18 @@
 Description: A free and comprehensive platform to learn Python’s Pandas library through real-word business problems faced by a multitude of industries. 
 
 Below are some steps to take in order to deploy our website. 
-- Note that Steps 1 to 6 are to be completed before forking our project from Github.</br>
-- Note that you would need to activate your GitHub Actions prior to forking. This would ensure the correct setup in AWS environment. </br>
+- Note that Steps 1 to 3 are to be completed before forking our project from Github.
+- Note that you would need to activate your GitHub Actions prior to forking. This would ensure the correct setup in AWS environment. 
 
-**Setting Up**
+
 1. [ AWS S3 Set-up. ](#s3)
 2. [ AWS IAM Set-up. ](#iam)
 3. [ AWS Lambda Set-up. ](#lambda)
 4. [ Edit template.yaml file from GitHub. ](#yaml) 
 5. [Upload all files onto S3 Bucket.](#updateFiles)
 6. [Update links on Lambda function.](#updateLinks)
-
-**Making Changes to Files**
-1. [Making Changes to .HTML File.](#changesHTML)
-2. [Making Changes to lambda_function.py File.](#changesLambda)
+7. [Making Changes to .HTML File.](#changesHTML)
+8. [Making Changes to lambda_function.py File.](#changesLambda)
 
 # Setting Up 
 <a name="s3"></a>
@@ -67,7 +65,7 @@ a. Create function:</br>
 &nbsp;&nbsp;&nbsp;&nbsp; ii. Runtime: Python3.7 </br>
 &nbsp;&nbsp;&nbsp;&nbsp; iii. Execution role -> Use an existing role -> Select the one you have created earlier. </br>
 &nbsp;&nbsp;&nbsp;&nbsp; iv. Add trigger -> API Gateway -> Create a new API -> Security: "Open" </br>
-&nbsp;&nbsp;&nbsp;&nbsp; v. Click "Layers" -> Add a layer -> Give your layer a name. -> Upload a file from Amazon S3. -> Paste the link that was copied in Step 1. -> Runtime: Python3.7 -> Add layer to lambda function. </br>
+&nbsp;&nbsp;&nbsp;&nbsp; v. Click "Layers" -> Add a layer -> Give your layer a name. -> Upload a file from Amazon S3. -> Paste the link that was copied in 1. AWS S3 Set-up -> Runtime: Python3.7 -> Add layer to lambda function. </br>
 b. Go to "Basic settings" and set 5min as Timeout.</br>
 c. You can now use the following code to import pandas. </br>
 ```

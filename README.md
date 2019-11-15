@@ -109,9 +109,9 @@ file_obj = s3.get_object(Bucket = '<your bucket name>', Key = "project-stock.htm
 ### 1.2 Updating links on all other .html files
 a. After uploading the edited .html file onto S3 Bucket, you would now need to change the links in all other .html files that are referencing to this newly edited .html file
 b. Replace the links in all .html file that are referencing to this file with the S3 link of this newly added .html file
-<pre><link rel="stylesheet" href="https://<b>mylambdajosh.s3.amazonaws.com</b>/css/animate.css"></pre>
+``` <link rel="stylesheet" href="https://mylambdajosh.s3.amazonaws.com/css/animate.css"> ```
 
-a. Change from: <b>mylambdajosh.s3.amazonaws.com</b> to the name of your own S3 Bucket URL</br>
+a. Change from: <b>mylambdajosh.s3.amazonaws.com</b> to the name of your own <b>S3 Bucket URL</b></br>
 
 
 c. If edits were made to multiple files, repeat same steps by uploading all the newly edited .html files and changing its links respectively to its S3 links

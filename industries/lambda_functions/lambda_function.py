@@ -362,7 +362,7 @@ def lambda_handler(event, context):
                 
                 if questionType == "non-dataframe":
                     if type(expectedText) == list:
-                        expectedText = tuple(expectedText)
+                        expectedText = tuple(expectedText) 
                         
                         
                 if numTestCases > i:

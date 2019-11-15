@@ -91,8 +91,16 @@ d. Change from: <b>1</b> to the version number of the created AWS Lambda Layer</
 
 <a name="uploadFiles"></a>
 ## 5. Upload all files onto S3 Bucket
-a. After forking the repo and editing template.yaml, upload all files onto S3 Bucket created previously
-b. On S3 Bucket, change ALL files to allow Public access (Note: using Change All button may not be accurate)
+a. After forking the repo and editing template.yaml, upload all files onto S3 Bucket created previously</br>
+&nbsp;&nbsp;&nbsp;&nbsp; i. Head to the S3 Bucket created previously</br>
+&nbsp;&nbsp;&nbsp;&nbsp; ii. Click on *Upload*</br>
+&nbsp;&nbsp;&nbsp;&nbsp; iii. Select all the files that are present on this GitHub page </br>
+
+b. On S3 Bucket, change ALL files to allow Public access (Note: using Change All button may not be accurate)</br>
+&nbsp;&nbsp;&nbsp;&nbsp; i. Click on an uploaded file that is listed on the S3 Bucket </br>
+&nbsp;&nbsp;&nbsp;&nbsp; ii. Click on *Actions* -> *Make public* </br>
+&nbsp;&nbsp;&nbsp;&nbsp; iii. Repeat the steps i and ii for all other files</br>
+
 
 <a name="updateLinks"></a>
 ## 6. Update links on Lambda function 
@@ -110,16 +118,26 @@ file_obj = s3.get_object(Bucket = '<your bucket name>', Key = "project-stock.htm
 <a name="changesHTML"></a>
 ## 1. Making Changes to .HTML File
 ### 1.1 Re-upload the new .html file onto S3 Bucket
+&nbsp;&nbsp;&nbsp;&nbsp; i. Head to S3 Bucket created previously </br>
+&nbsp;&nbsp;&nbsp;&nbsp; ii. Click on *Upload*</br>
+&nbsp;&nbsp;&nbsp;&nbsp; iii. Choose your newly updated .html file to upload it</br>
 
-### 1.2 Updating links on all other .html files
+### 1.2 Making .html file publically accessible
+&nbsp;&nbsp;&nbsp;&nbsp; i. Click on the file that is now listed on the S3 Bucket </br>
+&nbsp;&nbsp;&nbsp;&nbsp; ii. Click on *Actions*</br>
+&nbsp;&nbsp;&nbsp;&nbsp; iii. Under *Actions* click on *Make public*</br>
+
+### 1.3 Updating links on all other .html files
 a. After uploading the edited .html file onto S3 Bucket, you would now need to change the links in all other .html files that are referencing to this newly edited .html file
-b. Replace the links in all .html file that are referencing to this file with the S3 link of this newly added .html file</br>
+b. Replace the links with the S3 Object URL link of this newly added .html file</br>
+&nbsp;&nbsp;&nbsp;&nbsp; i. To get the S3 Object URL link, click once on the file listed on the S3 Bucket</br>
+&nbsp;&nbsp;&nbsp;&nbsp; ii. A panel will appear on the right of the screen</br>
+&nbsp;&nbsp;&nbsp;&nbsp; iii. Copy the link under *Overview* -> *Object URL*</br>
 ```
 <link rel="stylesheet" href="https://mylambdajosh.s3.amazonaws.com/css/animate.css">
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;Change from: <b>mylambdajosh.s3.amazonaws.com</b> to the name of your own <b>S3 Bucket URL</b></br>
-
 
 c. If edits were made to multiple files, repeat same steps by uploading all the newly edited .html files and changing its links respectively to its S3 links
 

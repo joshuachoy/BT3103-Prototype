@@ -116,7 +116,6 @@ a. After uploading the edited .html file onto S3 Bucket, you would now need to c
 b. Replace the links in all .html file that are referencing to this file with the S3 link of this newly added .html file</br>
 ```
 <link rel="stylesheet" href="https://mylambdajosh.s3.amazonaws.com/css/animate.css">
-
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;Change from: <b>mylambdajosh.s3.amazonaws.com</b> to the name of your own <b>S3 Bucket URL</b></br>
